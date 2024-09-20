@@ -26,7 +26,7 @@ function Navbar() {
           
         </div>
         <div className="flex space-x-4">
-          <Link href="/midashboard">
+          <Link href="/dashboard">
             <img src="/assets/iconouser.png" className='mb-[2px]' alt="icono carrito" />
           </Link>
           <Link href="/cart">
