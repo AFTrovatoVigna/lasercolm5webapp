@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar/navbar.jsx";
 import "./globals.css";
 
 import React from "react";
+import Footer from "@/components/Navbar/footer/Footer";
 
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <Footer/>
        
       </body>
     </html>
