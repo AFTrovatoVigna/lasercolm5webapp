@@ -12,7 +12,7 @@ function Navbar() {
           <li className="font-sans text-[24px] font-normal leading-[30.17px] text-left">
             <Link href="/">Home</Link></li>
           <li className="font-sans text-[24px] font-normal leading-[30.17px] text-left">
-            <Link href="/products">Productos</Link></li>
+            <Link href="/Productos">Productos</Link></li>
           <li className="font-sans text-[24px] font-normal leading-[30.17px] text-left">
             <Link href="/about">Sobre Nosotros</Link></li>
           <li className="font-sans text-[24px] font-normal leading-[30.17px] text-left">
