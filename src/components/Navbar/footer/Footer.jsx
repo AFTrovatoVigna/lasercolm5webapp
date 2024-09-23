@@ -1,17 +1,19 @@
 import React from 'react'
-
+import Link from 'next/link'
 const Footer = () => {
   return (
     <div   className="flex justify-between items-center h-[40px] lg:h-[70px] p-8"
     style={{
       background: 'linear-gradient(to right, #F6C0DF70 40%, #FADEB080 50%)',
     }}>
-
+<Link href="https://www.instagram.com/lasercol_sas/">
     <div className="flex items-center space-x-4">
       <img className="w-[30px]  lg:w-[25px] lg:h-[25px] lg:ml-1" src="/assets/instagram.png" alt="instagram" />
       
       <img className="w-[30px]  lg:w-[25px] lg:h-[25px]" src="/assets/whatsapp.png" alt="twitter" />
     </div>
+
+</Link>
   
     <div className="flex text-[12px] lg:justify-center lg:items-center lg:ml-10">
       <p>Copyright © 2025, Lasercol . Todos los derechos reservados Consulte nuestras condiciones de uso y el aviso de privacidad</p>
