@@ -5,18 +5,18 @@ import React from 'react'
 function Navbar() {
   return (
     <div>
-      <div className="flex justify-center mb-4 mt-4">
+      <div className="flex justify-center mt-4 mb-4">
         <img src="/assets/lasercol-logo.png" className='lg:w-[150px] lg:h-[50px]' alt="LaserCol Logo" />
       </div>
-      <nav className="bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100 py-4 px-8">
-      <div className="flex justify-between items-center">
+      <nav className="px-8 py-4 bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
+      <div className="flex items-center justify-between">
         <div className="flex space-x-8">
-          <Link href="/" className="text-black hover:text-gray-600 text-lg">Home</Link>
-          <Link href="/products" className="text-black hover:text-gray-600 text-lg">Productos</Link>
-          <Link href="/about" className="text-black hover:text-gray-600 text-lg">Sobre nosotros</Link>
-          <Link href="/designs" className="text-black hover:text-gray-600 text-lg">Diseños</Link>
+          <Link href="/" className="text-lg text-black hover:text-gray-600">Home</Link>
+          <Link href="/products" className="text-lg text-black hover:text-gray-600">Productos</Link>
+          <Link href="/about" className="text-lg text-black hover:text-gray-600">Sobre nosotros</Link>
+          <Link href="/designs" className="text-lg text-black hover:text-gray-600">Diseños</Link>
         </div>
-        <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-2">
+        <div className="flex items-center px-4 py-2 space-x-2 bg-gray-100 rounded-full">
           
           <input 
             type="text" 
