@@ -22,19 +22,19 @@ const handleChange = (event) => {
 };
 
 const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      const response = await login(dataUser)
-      const {token, user} = response
-      localStorage.setItem("userSession", JSON.stringify({token, user}))
-      Swal.fire("Te logueaste correctamente") 
-      router.push("/")
-    } catch (error) {
-      Swal.fire("No pudimos corroborar tus datos. Intentalo nuevamente")
-      throw Error(error)
-    }
+  event.preventDefault()
+  try {
+    const response = await login(dataUser)
+    console.log('Response:', response) // Verifica la respuesta para asegurarte de que llega correctamente
     
-
+    const { token } = response // Solo token, sin user
+    localStorage.setItem("userSession", JSON.stringify({ token })) // Guarda solo el token en localStorage
+    Swal.fire("Te logueaste correctamente")
+    router.push("/")
+  } catch (error) {
+    Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente")
+    console.error(error)
+  }
 }
 
 useEffect(() => {
