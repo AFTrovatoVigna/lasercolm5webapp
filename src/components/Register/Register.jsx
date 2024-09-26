@@ -52,7 +52,7 @@ const RegisterForm = () => {
      return (
         <div className="relative w-full h-screen p-8"> 
           <video
-            src="/assets/videologinregister.mp4"
+            src="/assets/videologinregister2.mp4"
             autoPlay
             loop
             muted
