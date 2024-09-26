@@ -2,17 +2,19 @@
 
 import { useEffect, useState } from "react";
 import ProductCard from "@/components/Card";
+import ProductsCards from "@/components/ProductsCards/ProductsCards";
+import FiltroProductos from "@/components/Filtro/filtro";
 
 function llaveros() {
 
-    const [products, setProducts ]= useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products/find/llaveros');
+                const response = await fetch('http://localhost:3000/products/category/llaveros');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -32,18 +34,15 @@ function llaveros() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-<div className="">
 
-        <div className="grid grid-cols-1 gap-3 p-10 md:grid-cols-3">
-            {products.map((product) => (
-                <ProductCard product={product} key={product.id} />
+        <div className="">
+            <ProductsCards />
+            <FiltroProductos productos=
+                { products }
+             />
 
-
-            ))}
 
         </div>
-    
-</div>
 
 
     )
