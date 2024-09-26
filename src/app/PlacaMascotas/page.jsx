@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import ProductCard from "@/components/Card";
+import ProductsCards from "@/components/ProductsCards/ProductsCards";
+import FiltroProductos from "@/components/Filtro/filtro";
 
 function PlacaMascotas() {
 
@@ -12,7 +14,7 @@ function PlacaMascotas() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products/find/PlacasMascotas');
+                const response = await fetch('http://localhost:3000/products/category/placasmascotas');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -33,16 +35,11 @@ function PlacaMascotas() {
 
     return (
 <div className="">
-
-        <div className="grid grid-cols-1 gap-3 p-10 md:grid-cols-3">
-            {products.map((product) => (
-                <ProductCard product={product} key={product.id} />
-
-
-            ))}
-
-        </div>
-    
+<ProductsCards/>
+<FiltroProductos productos=
+                { products }
+             />
+       
 </div>
 
 
