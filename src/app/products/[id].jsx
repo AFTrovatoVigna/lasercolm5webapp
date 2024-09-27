@@ -1,0 +1,7 @@
+import React from 'react'
+import { useRouter } from 'next/router'
+ 
+export const ProductDetail = () => {
+  const router = useRouter()
+  return <p>Post: {router.query.id}</p>
+}
