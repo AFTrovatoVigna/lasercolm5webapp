@@ -7,7 +7,7 @@ export const validateRegister = (form) => {
 
   const regExp = {
 
-    name: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$/, // Permite letras y caracteres acentuados pero NO espacios
+    name: /^[A-Za-z]+( [A-Za-z]+)*$/, // Permite letras y caracteres acentuados pero NO espacios
 
       email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Formato de email
       password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/,

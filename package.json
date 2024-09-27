@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,10 +22,7 @@
     "react-dom": "^18",
 
     "sweetalert2": "^11.14.1",
-    "styled-components": "^6.1.13",
-
-    
-
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "eslint": "^8",
