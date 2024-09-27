@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { validateRegister } from '@/helpers/validateRegister';
 import { useRouter } from 'next/navigation';
 import { register } from '@/helpers/auth.helper';
+import { CreateCart } from '@/helpers/cart.helper';
 import Swal from 'sweetalert2';
 
 const RegisterForm = () => {
@@ -42,8 +43,11 @@ const RegisterForm = () => {
     }
 
     try {
-      await register(dataUser);
+      const newuser = await register(dataUser);
       Swal.fire("Te registraste correctamente");
+      const newCart = await CreateCart(newuser.id);
+      console.log ("The new cart",newCart);
+      console.log ("The new user id", newuser.id);
       router.push("/login");
     } catch (error) {
       Swal.fire("No pudimos registrarte");
