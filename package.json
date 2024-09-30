@@ -18,11 +18,11 @@
     "@mui/x-data-grid-pro": "^7.18.0",
     "dotenv": "^16.4.5",
     "next": "14.2.12",
+    "next-auth": "^4.24.8",
     "react": "^18",
     "react-dom": "^18",
-
-    "sweetalert2": "^11.14.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "sweetalert2": "^11.14.1"
   },
   "devDependencies": {
     "eslint": "^8",
