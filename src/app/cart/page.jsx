@@ -8,12 +8,17 @@ const Cart = () => {
   const [userData, setUserData] = useState(null);
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state
+  const [cartId, setCartId] = useState(null); // State to store cartId
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedSession = localStorage.getItem("userSession");
       if (storedSession) {
         setUserData(JSON.parse(storedSession));
+      }
+      const storedCartId = localStorage.getItem("cartId"); // Retrieve cartId from local storage
+      if (storedCartId) {
+        setCartId(storedCartId); // Set the cartId state
       }
     }
   }, []);
@@ -37,7 +42,8 @@ const Cart = () => {
     fetchCart();
   }, [userData]);
 
-  const cartIsEmpty = cart && cart.products;
+  // Check if cart is empty or products array is empty
+  const cartIsEmpty = cart && (!cart.products || cart.products.length === 0);
 
   return (
     <div className="pt-[100px] mx-[15px]">
@@ -47,6 +53,11 @@ const Cart = () => {
           <h3>Cargando carrito...</h3>
         </div>
       ) : cartIsEmpty ? (
+        <div className="flex flex-col items-center justify-center">
+          <img className="max-w-xs" src="/assets/empty-shooping-bag.jpg" alt="Empty Shopping Bag" />
+          <h3 className="text-center">Tu carrito está vacío</h3>
+        </div>
+      ) : (
         <>
           <h2 className="pb-2 mb-4 text-2xl font-bold text-gray-800 border-b-2 border-gray-300">
             Productos en el carrito:
@@ -55,17 +66,12 @@ const Cart = () => {
           <ul>
             {cart.products.map((product) => (
               <li key={product.id}>
-                <CartProduct product={product}/>
+                <CartProduct product={product} cartId={cartId} /> {/* Pass cartId as a prop */}
               </li>
             ))}
           </ul>
-          <p>Se realizo la orden de compra: {cart.isPurchased ? "Yes" : "No"}</p>
+          <p>Se realizó la orden de compra: {cart.isPurchased ? "Yes" : "No"}</p>
         </>
-      ) : (
-        <div className="flex flex-col items-center justify-center">
-          <img className="max-w-xs" src="/assets/empty-shooping-bag.jpg" alt="Empty Shopping Bag" />
-          <h3 className="text-center">Tu carrito está vacío</h3>
-        </div>
       )}
     </div>
   );

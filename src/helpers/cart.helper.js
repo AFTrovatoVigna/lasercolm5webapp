@@ -50,3 +50,31 @@ export async function AddtoCart(cartId, productId, router) {
   }
 }
 
+export async function DeleteProductFromCart(cartId, productId, router) {
+  // Prompt the user for confirmation
+  const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
+
+  if (!isConfirmed) {
+    return; // Exit if the user does not confirm
+  }
+
+  try {
+    const res = await fetch(`http://localhost:3000/cart/${cartId}/product/${productId}`, {
+      method: 'DELETE', 
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+
+    if (res.ok) {
+      
+      router.push("/cart"); 
+    } else {
+      throw new Error("Failed to delete product from cart");
+    }
+  } catch (error) {
+    throw new Error(`Failed to delete product from cart: ${error.message}`);
+  }
+}
+
+
