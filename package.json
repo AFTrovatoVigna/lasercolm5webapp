@@ -17,12 +17,12 @@
     "@mui/x-data-grid-generator": "^7.18.0",
     "@mui/x-data-grid-pro": "^7.18.0",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18",
-
-    "sweetalert2": "^11.14.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "sweetalert2": "^11.14.1"
   },
   "devDependencies": {
     "eslint": "^8",

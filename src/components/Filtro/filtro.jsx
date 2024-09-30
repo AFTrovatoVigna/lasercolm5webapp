@@ -12,7 +12,7 @@ const FiltroProductos = ({ productos }) => {
     const [productosFiltrados, setproductosFiltrados] = useState([]);
 
     useEffect(() => {
-        console.log(productos[0].category.name);
+        // console.log(productos[0].category.name);
 
         setcategorys([...new Set(productos.map(p => {
            if(p.category != null){
