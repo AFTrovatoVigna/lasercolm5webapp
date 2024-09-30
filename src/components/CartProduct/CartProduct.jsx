@@ -3,9 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { DeleteProductFromCart } from '@/helpers/cart.helper';
 
-const CartProduct = ({ product, cartId }) => {
-  const router = useRouter(); // Get the router instance
-
+const CartProduct = ({ product, cartId, router }) => { // Accept router as a prop
   const handleDelete = async () => {
     await DeleteProductFromCart(cartId, product.id, router); // Call the delete function
   };

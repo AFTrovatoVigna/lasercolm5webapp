@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { GetCart } from '@/helpers/cart.helper';
 import CartProduct from '@/components/CartProduct/CartProduct';
+import { useRouter } from 'next/navigation'; // Import useRouter
 
 const Cart = () => {
+  const router = useRouter(); // Initialize the router
   const [userData, setUserData] = useState(null);
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state
@@ -66,7 +68,7 @@ const Cart = () => {
           <ul>
             {cart.products.map((product) => (
               <li key={product.id}>
-                <CartProduct product={product} cartId={cartId} /> {/* Pass cartId as a prop */}
+                <CartProduct product={product} cartId={cartId} router={router} /> {/* Pass router as a prop */}
               </li>
             ))}
           </ul>
