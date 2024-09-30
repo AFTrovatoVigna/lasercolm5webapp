@@ -2,6 +2,7 @@
 
 import { login } from '@/helpers/auth.helper'
 import { validateLogin } from '@/helpers/validateLogin'
+import { signIn, useSession, signOut } from 'next-auth/react';
 
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -9,6 +10,7 @@ import Swal from 'sweetalert2'
 import Link from 'next/link'
 
 const Login = () => {
+  const { data: session } = useSession();
   const router = useRouter()
   const initialState = { email: '', password: '' }
   
@@ -97,15 +99,27 @@ const Login = () => {
           {errors.password && <p className="text-red-600">{errors.password}</p>}
         </div>
 
-        <div className=''>
-          <button 
-            type="submit" 
-            disabled={!!errors.email} 
-            className='w-full p-2 mt-4 text-white transition-colors bg-pink-500 rounded cursor-pointer hover:bg-pink-600'
-          >
-            Ingresar
-          </button>
-        </div>
+      <div className=''>
+        <button 
+          type="submit" 
+          disabled={!!errors.email} 
+          className='w-full p-2 mt-4 text-white transition-colors bg-pink-500 rounded cursor-pointer hover:bg-pink-600'
+        >
+          Ingresar
+        </button>
+      </div>
+      
+      <div className="flex items-center justify-center mt-5 space-x-1 font-bold">
+  <h1>Ingresar con Google</h1>
+  <button
+    onClick={() => signIn('google', { callbackUrl: '/' })}
+    className="flex items-center p-3 bg-pink-200"
+  >
+    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
+    
+  </button>
+</div>
+
 
         <h2 className='mt-3 text-center'>Todavía no te registraste?</h2>
         <Link href={'/register'} className='block p-2 mx-auto hover:text-pink-950 font-bold underline h-[30px]  text-center lg:text-lg  text-bold  text-pink-800 rounded-lg'>

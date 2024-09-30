@@ -12,13 +12,12 @@ const FiltroProductos = ({ productos }) => {
     const [productosFiltrados, setproductosFiltrados] = useState([]);
 
     useEffect(() => {
-        // console.log(productos[0].category.name);
 
         setcategorys([...new Set(productos.map(p => {
-           if(p.category != null){
-            return p.category.name
-           }
-             
+            if (p.category != null) {
+                return p.category.name
+            }
+
         }))]);
         setcolores([...new Set(productos.map(p => p.color))]);
     }, [])
@@ -31,48 +30,50 @@ const FiltroProductos = ({ productos }) => {
         if (productos.length > 0) {
 
             let arrayProductos = productos.filter(producto => {
+                console.log(producto);
 
-                if (color) {
-                    const colorValido = color ? producto.color === color : true;
-                    return colorValido;
-                } else if (category) {
-                    const categoryValida = category ? producto.category === category : true;
-                    return categoryValida
-                } else if (precio[1] > 0) {
+                if (precio[1] > 0 && category && color) {
 
-                    console.log(producto.price, "<=", precio[1]);
-                    console.log(producto.price <= precio[1]);
-
-                    const precioValido = producto.price >= precio[0] && producto.price <= precio[1];
-
-                    return precioValido
-                } else if (category && color) {
+                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
                     const categoryValida = category ? producto.category === category : true;
                     const colorValido = color ? producto.color === color : true;
-                    return categoryValida && colorValido;
+                    return precioValido && categoryValida && colorValido;
+                } else if (precio[1] > 0 && color) {
+
+                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
+                    const colorValido = color ? producto.color === color : true;
+                    return precioValido && colorValido;
                 } else if (precio[1] > 0 && category) {
 
 
-                    const precioValido = producto.price >= precio[0] && producto.price <= precio[1];
+                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
                     const categoryValida = category ? producto.category === category : true;
 
                     return precioValido && categoryValida;
 
-                } else if (precio[1] > 0 && color) {
-
-                    const precioValido = producto.price >= precio[0] && producto.price <= precio[1];
-                    const colorValido = color ? producto.color === color : true;
-                    return precioValido && colorValido;
-                } else if (precio[1] > 0 && category && color) {
-
-                    const precioValido = producto.price >= precio[0] && producto.price <= precio[1];
+                } else if (category && color) {
                     const categoryValida = category ? producto.category === category : true;
                     const colorValido = color ? producto.color === color : true;
-                    return precioValido && categoryValida && colorValido;
+                    return categoryValida && colorValido;
+                } else if (precio[1] > 0) {
+
+                    console.log(producto.valor, "<=", precio[1]);
+                    console.log(producto.valor <= precio[1]);
+
+                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
+
+                    return precioValido
+                } else if (color) {
+                    const colorValido = color ? producto.color === color : true;
+                    return colorValido;
+                } else if (category) {
+                    if (producto.category != null) {
+
+                        const categoryValida = category ? producto.category.name === category : true;
+                        return categoryValida
+                    }
                 }
             });
-
-            console.log(arrayProductos);
 
             setproductosFiltrados(arrayProductos)
         }
@@ -132,7 +133,7 @@ const FiltroProductos = ({ productos }) => {
             </aside>
 
 
-            <section className="w-3/4 p-4">
+            <section className="w-3/4 p-4"> 
                 <ProductGridComponent products={productosFiltrados.length > 0 ? productosFiltrados : productos} />
             </section>
         </div>

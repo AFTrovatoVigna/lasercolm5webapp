@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { register } from '@/helpers/auth.helper';
 import { CreateCart } from '@/helpers/cart.helper';
 import Swal from 'sweetalert2';
+import { signIn, useSession, signOut } from 'next-auth/react';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -239,6 +240,18 @@ const RegisterForm = () => {
           >
             Registrarse
           </button>
+          <div className="flex items-center ml-16 font-bold justify-center mt-5 space-x-1">
+  <h1>Ingresar con Google</h1>
+  <button
+    onClick={() => signIn('google', { callbackUrl: '/' })}
+    className="bg-pink-200 p-3 flex items-center"
+  >
+    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
+    
+  </button>
+</div>
+
+         
         </form>
       </div>
     </div>
