@@ -27,7 +27,6 @@ async function ProductDetail({ params }) {
                 <div className="flex flex-col justify-between flex-1">
                     {/* Product Name */}
                     <h1 className="mb-4 text-3xl font-bold text-gray-800">{product.nombre}</h1>
-                    <p>{product.id}</p>
                     {/* Product Highlights */}
                     <div className="mb-6 space-y-2">
                         <h2 className="text-lg font-semibold text-gray-600">Color: {product.color}</h2>
