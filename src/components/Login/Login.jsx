@@ -37,7 +37,7 @@ const Login = () => {
       // Fetch the cart using the user ID
       const cartResponse = await fetch(`${APIURL}/${id}`)
       const cartData = await cartResponse.json()
-
+      conole.log (cartData);
       // Store the cart ID in localStorage
       localStorage.setItem("cartId", cartData.id)
 
