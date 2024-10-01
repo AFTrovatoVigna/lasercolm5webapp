@@ -5,7 +5,7 @@ import ProductCard from "@/components/Card";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import FiltroProductos from "@/components/Filtro/filtro";
 
-function llaveros() {
+function Llaveros() { // Renamed to uppercase
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,19 +34,11 @@ function llaveros() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-
         <div className="">
             <ProductsCards />
-            <FiltroProductos productos=
-                { products }
-             />
-
-
+            <FiltroProductos productos={products} />
         </div>
-
-
-    )
-
+    );
 }
 
-export default llaveros;
+export default Llaveros; // Changed to uppercase

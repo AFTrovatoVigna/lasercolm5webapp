@@ -74,9 +74,10 @@ export default function Home() {
 
               </div>
               <p className="italic text-gray-700">
-                "Trabajo con esta empresa desde hace años y siempre me sorprenden con su dedicación y profesionalismo. Las piezas que personalizan son únicas y hechas con un esmero que se nota en cada detalle. ¡Excelente experiencia!"
+                &quot;Trabajo con esta empresa desde hace años y siempre me sorprenden con su dedicación y profesionalismo. Las piezas que personalizan son únicas y hechas con un esmero que se nota en cada detalle. ¡Excelente experiencia!&quot;
               </p>
               <p className="mt-4 text-gray-500">— Juan Pérez</p>
+
             </div>
 
 
