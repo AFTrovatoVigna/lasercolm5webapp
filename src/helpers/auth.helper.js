@@ -16,7 +16,7 @@ export async function register(userData) {
     userData.phone = Number(userData.phone); // Asegúrate de que sea un número
 
     try {
-        const res = await fetch(`http://localhost:3000/auth/register`, {
+        const res = await fetch(`${APIURL}/register`, {
             method: `POST`,
             headers: {
                 "Content-type": "application/json"

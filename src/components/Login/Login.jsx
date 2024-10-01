@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 import Link from 'next/link'
 
 const Login = () => {
+  const APIURL = process.env.NEXT_PUBLIC_API_URL
   const { data: session } = useSession();
   const router = useRouter()
   const initialState = { email: '', password: '' }
@@ -33,7 +34,7 @@ const Login = () => {
       localStorage.setItem("userSession", JSON.stringify({ token, id }))
 
       // Fetch the cart using the user ID
-      const cartResponse = await fetch(`http://localhost:3000/cart/${id}`)
+      const cartResponse = await fetch(`${APIURL}/${id}`)
       const cartData = await cartResponse.json()
 
       // Store the cart ID in localStorage

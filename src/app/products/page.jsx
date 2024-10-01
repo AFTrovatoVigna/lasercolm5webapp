@@ -1,13 +1,14 @@
 "use client"
-import ProductGridComponent from "@/components/Cards"
+import ProductGridComponent from "@/components/Cards";
 import FiltroProductos from "@/components/Filtro/filtro";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect, useState } from "react";
 
-function product() {
+function Product() { // Changed to uppercase
     const [productos, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,15 +28,16 @@ function product() {
 
         fetchData();
     }, []);
+
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
+
     return (
         <div>
             <ProductsCards />
             <FiltroProductos productos={productos} />
         </div>
-
-    )
+    );
 }
 
-export default product;
+export default Product; // Changed to uppercase

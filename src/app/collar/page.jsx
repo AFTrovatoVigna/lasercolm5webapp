@@ -5,8 +5,8 @@ import ProductCard from "@/components/Card";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import FiltroProductos from "@/components/Filtro/filtro";
 
-function collar() {
-
+function Collar() { // Changed to uppercase
+    const APIURL = process.env.NEXT_PUBLIC_API_URL
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ function collar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products/category/collares');
+                const response = await fetch(`${APIURL}/collares`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -35,17 +35,10 @@ function collar() {
 
     return (
         <div className="">
-<ProductsCards/>
-<FiltroProductos productos=
-                { products }
-             />
-           
-
+            <ProductsCards />
+            <FiltroProductos productos={products} />
         </div>
-
-
-    )
-
+    );
 }
 
-export default collar;
+export default Collar; // Changed to uppercase
