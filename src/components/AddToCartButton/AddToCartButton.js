@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { AddtoCart } from '@/helpers/cart.helper';
+import Swal from 'sweetalert2';
 
 const AddToCartButton = ({ productId }) => {
   const router = useRouter(); // Usar el hook aquí
@@ -9,19 +10,38 @@ const AddToCartButton = ({ productId }) => {
   const handleAddToCart = async () => {
     const cartId = localStorage.getItem('cartId');
     if (!cartId) {
-      alert('No se encontró un cartId en el localStorage.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontró un cartId en el localStorage.'
+      });
       return;
     }
 
     // Mostrar confirmación antes de agregar al carrito
-    const confirmAddToCart = window.confirm("¿Quiere añadir el producto al carrito de compras?");
-    if (confirmAddToCart) {
+    const result = await Swal.fire({
+      title: '¿Está seguro?',
+      text: "¿Quiere añadir el producto al carrito de compras?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, agregar',
+      cancelButtonText: 'Cancelar'
+    });
+    if (result.isConfirmed) {
       try {
         await AddtoCart(cartId, productId, router); // Pasar router como parámetro
-        alert('Producto agregado al carrito exitosamente.');
+        Swal.fire({
+          icon: 'success',
+          title: 'Agregado',
+          text: 'Producto agregado al carrito exitosamente.'
+        });
       } catch (error) {
         console.error('Error al agregar al carrito:', error);
-        alert('Error agregando el producto al carrito.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error agregando el producto al carrito.'
+        });
       }
     }
   };

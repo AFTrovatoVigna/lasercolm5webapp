@@ -1,5 +1,7 @@
-import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export async function CreateCart(userId) {
   
   try {
@@ -53,7 +55,16 @@ export async function AddtoCart(cartId, productId, router) {
 
 export async function DeleteProductFromCart(cartId, productId, router) {
   // Prompt the user for confirmation
-  const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
+  const isConfirmed = await Swal.fire({
+    title: '¿Estás seguro de que deseas eliminar este producto del carrito?',
+    text: "¡No podrás revertir esto!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  });
 
   if (!isConfirmed) {
     return; // Exit if the user does not confirm
