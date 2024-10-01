@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
 import FiltroProductos from "@/components/Filtro/filtro";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect, useState } from "react";
 
-function Product() { 
-    const APIURL = process.env.NEXT_PUBLIC_API_URL
+function Product() {
     const [productos, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // Access the API URL here
+    const APIURL = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +30,7 @@ function Product() {
         };
 
         fetchData();
-    }, [APIURL]);
+    }, [APIURL]); // Add APIURL as a dependency
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -41,4 +43,4 @@ function Product() {
     );
 }
 
-export default Product; // Changed to uppercase
+export default Product;
