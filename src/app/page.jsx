@@ -102,7 +102,7 @@ export default function Home() {
 
               </div>
               <p className="italic text-gray-700">
-                "Me encanta cómo mi diseño quedó perfecto en el llavero que pedí. El grabado láser es impecable y el servicio al cliente es muy atento. ¡Definitivamente volveré a comprar!"
+                `Me encanta cómo mi diseño quedó perfecto en el llavero que pedí. El grabado láser es impecable y el servicio al cliente es muy atento. ¡Definitivamente volveré a comprar!`
               </p>
               <p className="mt-4 text-gray-500">— María López</p>
             </div>
@@ -129,7 +129,7 @@ export default function Home() {
 
               </div>
               <p className="italic text-gray-700">
-                "Esta empresa ha superado todas mis expectativas. La calidad del grabado y la personalización son sobresalientes. El proceso fue fácil y el resultado final fue exactamente lo que imaginé."
+                `Esta empresa ha superado todas mis expectativas. La calidad del grabado y la personalización son sobresalientes. El proceso fue fácil y el resultado final fue exactamente lo que imaginé.`
               </p>
               <p className="mt-4 text-gray-500">— Luis Fernández</p>
             </div>
@@ -155,7 +155,7 @@ export default function Home() {
                 </svg>
               </div>
               <p className="italic text-gray-700">
-                "Cada pieza que he recibido es una obra de arte. La personalización es de primera, se nota la calidad en cada detalle. Sin duda, una de las mejores empresas en su campo."
+                `Cada pieza que he recibido es una obra de arte. La personalización es de primera, se nota la calidad en cada detalle. Sin duda, una de las mejores empresas en su campo.`
               </p>
               <p className="mt-4 text-gray-500">— Sofía Gómez</p>
             </div>
