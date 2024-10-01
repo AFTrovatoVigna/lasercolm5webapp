@@ -3,7 +3,7 @@
 import { login } from '@/helpers/auth.helper'
 import { validateLogin } from '@/helpers/validateLogin'
 import { signIn, useSession, signOut } from 'next-auth/react';
-
+import GoogleLoginButton from '../GoogleLoginButton';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -109,15 +109,13 @@ const Login = () => {
         </button>
       </div>
       
-      <div className="flex items-center justify-center mt-5 space-x-1 font-bold">
-  <h1>Ingresar con Google</h1>
-  <button
-    onClick={() => signIn('google', { callbackUrl: '/' })}
-    className="flex items-center p-3 bg-pink-200"
-  >
-    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
-    
-  </button>
+
+      <div className="flex items-center font-bold justify-center mt-5 space-x-1">
+ 
+ <GoogleLoginButton/>
+ 
+
+   
 </div>
 
 
@@ -131,3 +129,4 @@ const Login = () => {
 }
 
 export default Login
+
