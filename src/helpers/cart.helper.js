@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function CreateCart(userId) {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  
   try {
     console.log("Request body:", { userId }); // Debugging output
     const res = await fetch(`${API_URL}/cart/create`, {
