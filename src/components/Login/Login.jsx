@@ -25,30 +25,46 @@ const Login = () => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      // Login the user
-      const response = await login(dataUser)
-      const { token, id } = response // Get token and user ID
-      
+      // Debug API_URL
+      console.log("API_URL:", APIURL);
+  
+      // Attempt to login
+      const response = await login(dataUser);
+      console.log("Response from login:", response); // Debugging
+  
+      if (!response) {
+        Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente");
+        return;
+      }
+  
+      const { token, id } = response; // Get token and user ID
+      console.log("User ID:", id, "Token:", token);
+  
       // Store token and user ID in localStorage
-      localStorage.setItem("userSession", JSON.stringify({ token, id }))
-
+      localStorage.setItem("userSession", JSON.stringify({ token, id }));
+  
       // Fetch the cart using the user ID
-      const cartResponse = await fetch(`${APIURL}/${id}`)
-      const cartData = await cartResponse.json()
-      conole.log (cartData);
+      const cartResponse = await fetch(`${APIURL}/cart/${id}`); // Use correct endpoint for carts
+      if (!cartResponse.ok) {
+        throw new Error("Failed to fetch cart");
+      }
+      const cartData = await cartResponse.json();
+      console.log(cartData); // Fix typo
+  
       // Store the cart ID in localStorage
-      localStorage.setItem("cartId", cartData.id)
-
+      localStorage.setItem("cartId", cartData.id);
+  
       // Notify the user and redirect
-      Swal.fire("Te logueaste correctamente")
-      router.push("/")
+      Swal.fire("Te logueaste correctamente");
+      router.push("/");
     } catch (error) {
-      Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente")
-      console.error(error)
+      Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente");
+      console.error(error);
     }
-  }
+  };
+  
 
   useEffect(() => {
     const errors = validateLogin(dataUser)
