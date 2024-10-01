@@ -1,10 +1,11 @@
 "use client"
-import ProductGridComponent from "@/components/Cards";
+
 import FiltroProductos from "@/components/Filtro/filtro";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect, useState } from "react";
 
-function Product() { // Changed to uppercase
+function Product() { 
+    const APIURL = process.env.NEXT_PUBLIC_API_URL
     const [productos, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ function Product() { // Changed to uppercase
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products');
+                const response = await fetch(`${APIURL}/products`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -27,7 +28,7 @@ function Product() { // Changed to uppercase
         };
 
         fetchData();
-    }, []);
+    }, [APIURL]);
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
