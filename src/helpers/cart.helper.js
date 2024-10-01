@@ -60,7 +60,7 @@ export async function DeleteProductFromCart(cartId, productId, router) {
   }
 
   try {
-    const res = await fetch(`${API_URL}/${cartId}/product/${productId}`, {
+    const res = await fetch(`${API_URL}/cart/${cartId}/product/${productId}`, {
       method: 'DELETE', 
       headers: {
         "Content-type": "application/json"
