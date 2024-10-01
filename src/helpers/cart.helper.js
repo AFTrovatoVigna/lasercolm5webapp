@@ -1,9 +1,10 @@
 import { useRouter } from 'next/navigation';
 
 export async function CreateCart(userId) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   try {
     console.log("Request body:", { userId }); // Debugging output
-    const res = await fetch(`http://localhost:3000/cart/create`, {
+    const res = await fetch(`${API_URL}/cart/create`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
@@ -24,7 +25,7 @@ export async function CreateCart(userId) {
 
 export async function GetCart(userId) {
   try {
-    const res = await fetch(`http://localhost:3000/cart/${userId}`);
+    const res = await fetch(`${API_URL}/cart/${userId}`);
     const cart = res;
     return cart;
   } catch (error) {
@@ -34,7 +35,7 @@ export async function GetCart(userId) {
 
 export async function AddtoCart(cartId, productId, router) {
   try {
-    const res = await fetch(`http://localhost:3000/cart/${cartId}/${productId}`, {
+    const res = await fetch(`${API_URL}/cart/${cartId}/${productId}`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
@@ -59,7 +60,7 @@ export async function DeleteProductFromCart(cartId, productId, router) {
   }
 
   try {
-    const res = await fetch(`http://localhost:3000/cart/${cartId}/product/${productId}`, {
+    const res = await fetch(`${API_URL}/${cartId}/product/${productId}`, {
       method: 'DELETE', 
       headers: {
         "Content-type": "application/json"

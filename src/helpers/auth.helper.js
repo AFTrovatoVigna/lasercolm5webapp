@@ -38,7 +38,7 @@ export async function register(userData) {
 
 export async function login(userData) {
     try {
-        const res = await fetch(`http://localhost:3000/auth/login`, {
+        const res = await fetch(`${APIURL}/auth/login`, {
             method: `POST`,
             headers: {
                 "Content-type": "application/json"

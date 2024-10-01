@@ -28,7 +28,7 @@ function Collar() { // Changed to uppercase
         };
 
         fetchData();
-    }, []);
+    }, [APIURL]);
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
