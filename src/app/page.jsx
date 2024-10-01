@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="bg-pink-100" >
-      <div className="w-{100%} h-[400px] overflow-hidden">
+    <div className="bg-pink-100 " >
+      <div className="w-[1726px] h-[400px] overflow-hidden">
         <video src="/assets/videohome2.mp4" autoPlay loop muted playsInline className="w-{100%} h-auto object-cover" />
       </div>
 
