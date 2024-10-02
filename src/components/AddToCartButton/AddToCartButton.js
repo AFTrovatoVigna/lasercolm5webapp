@@ -13,7 +13,7 @@ const AddToCartButton = ({ productId }) => {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'No se encontró un cartId en el localStorage.'
+        text: 'Inicia sesion para poder añadir el producto'
       });
       return;
     }
