@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { signOut } from "next-auth/react";
 
 function Navbar() {
   const router = useRouter();
@@ -29,11 +30,25 @@ function Navbar() {
     }
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    // Cerrar sesión del login normal
     localStorage.removeItem('userSession');
+    localStorage.removeItem('token');
     localStorage.removeItem('cartId');
+    
     setIsLoggedIn(false);
+    
+    // Cerrar sesión de Google (NextAuth)
+    await signOut({ callbackUrl: '/' });
+    
+    // Redirigir al usuario a la página de inicio
     router.push('/');
+  };
+
+  const logout = () => {
+    
+  
+   
   };
 
   return (
