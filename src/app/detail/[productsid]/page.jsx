@@ -41,7 +41,7 @@ async function ProductDetail({ params }) {
                     <h3 className="mb-6 text-2xl font-bold text-gray-800">Precio: {product.valor}</h3>
 
                    
-                    <AddToCartButton productId={product.id} /> 
+               
                 </div>
             </div>
         </div>
