@@ -1,41 +1,64 @@
 import Link from "next/link";
 function ProductsCards() {
     return (
-        <section className="flex justify-around mt-7 lg:space-x-4 lg:p-4 lg:mt-20">
-
-            <Link href="/llaveros" className="flex flex-col justify-center">
-                <img src="/assets/llavero.png" className=" w-[70px] h-[70px]  lg:w-[200px] lg:h-[200px] lg:border- border-black rounded-[100%] transition-transform duration-100 hover:scale-105 " alt="foto llaveros" />
-                <span className="text-white text-[10px] text-center mb-3 lg:text-black lg:text-xl lg:text-center lg:mb-7" >Llaveros</span>
-            </Link  >
-
-            <Link href="/ManillaId">
-
-                <div className="flex flex-col justify-center">
-                    <img src="/assets/manilla.png" className="w-[70px] h-[70px]  lg:w-[200px] lg:h-[200px] lg:border- border-black rounded-[100%] transition-transform duration-100 hover:scale-105  " alt="foto manillas" />
-                    <span className="text-black text-[10px] text-center mb-3 lg:text-black lg:text-xl lg:text-center lg:mb-7">Manillas ID</span>
-                </div>
-
-            </Link>
-
-
-            <Link href="/PlacaMascotas">
-
-                <div className="flex flex-col justify-center">
-                    <img src="/assets/placamascota.png" className="w-[70px] h-[70px]  lg:w-[200px] lg:h-[200px] lg:border- border-black rounded-[100%] transition-transform duration-100 hover:scale-105 " alt="foto placas mascotas" />
-                    <span className="text-white text-[10px] text-center mb-3 lg:text-black lg:text-xl lg:text-center lg:mb-7">Placas para tu mascota</span>
+        <section className="flex flex-col items-center space-y-4 mt-7 lg:flex-row lg:justify-around lg:space-x-4 lg:space-y-0 lg:p-4 lg:mt-20">
+            
+            <Link href="/llaveros" className="relative flex flex-col items-center group">
+                <div className="relative w-[280px] h-[240px] lg:w-[280px] lg:h-[280px]">
+                    <img
+                        src="/assets/llavero1.jpg"
+                        className="w-full h-full border-black lg:rounded-full transition-transform duration-100 hover:scale-105"
+                        alt="foto llaveros"
+                    />
+                     <span className="absolute inset-0 flex items-center justify-center bg-pink-300 lg:rounded-full text-black text-[18px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:text-2xl bg-opacity-55 ">
+                        LLAVEROS
+                    </span>
                 </div>
             </Link>
 
-            <Link href="/collar" className="flex flex-col justify-center">
-                <img src="/assets/collar.png" className="w-[70px] h-[70px]  lg:w-[200px] lg:h-[200px] lg:border- border-black rounded-[100%] transition-transform duration-100 hover:scale-105 " alt="foto collares" />
-                <span className="text-white text-[10px] text-center mb-3 lg:text-black lg:text-xl lg:text-center lg:mb-7">Collares</span>
+            <Link href="/ManillaId" className="relative flex flex-col items-center group">
+                <div className="relative w-[280px] h-[240px] lg:w-[280px] lg:h-[280px]">
+                    <img
+                        src="/assets/manilla1.jpg"
+                        className="w-full h-full border-black lg:rounded-full transition-transform duration-100 hover:scale-105"
+                        alt="foto manillas"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center bg-pink-300 lg:rounded-full text-black text-[18px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:text-2xl bg-opacity-55">
+                        MANILLAS ID
+                    </span>
+                </div>
+            </Link>
+
+            <Link href="/PlacaMascotas" className="relative flex flex-col items-center group">
+                <div className="relative w-[280px] h-[240px] lg:w-[280px] lg:h-[280px]">
+                    <img
+                        src="/assets/placamascota1.jpg"
+                        className="w-full h-full border-black lg:rounded-full transition-transform duration-100 hover:scale-105"
+                        alt="foto placas mascotas"
+                    />
+                    <span className=" absolute inset-0 flex items-center justify-center bg-pink-300 lg:rounded-full text-black text-[18px] opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:text-2xl text-center   bg-opacity-55">
+                        PLACAS PARA MASCOTAS
+                    </span>
+                </div>
+            </Link>
+
+            <Link href="/collar" className="relative flex flex-col items-center group">
+                <div className="relative w-[280px] h-[240px] lg:w-[280px] lg:h-[280px]">
+                    <img
+                        src="/assets/collar1.jpeg"
+                        className="w-full h-full border-black lg:rounded-full transition-transform duration-100 hover:scale-105"
+                        alt="foto collares"
+                    />
+                     <span className="absolute inset-0 flex items-center justify-center bg-pink-300 lg:rounded-full text-black text-[18px] opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:text-2xl bg-opacity-55 ">
+                        COLLARES
+                    </span>
+                </div>
             </Link>
 
         </section>
-
-
-    )
-
-
+    );
 }
+
 export default ProductsCards;
+
+

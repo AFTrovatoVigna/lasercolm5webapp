@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import Image from "next/image";
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 
 const ProductDetailClient = ({ product }) => {
@@ -93,7 +94,7 @@ const ProductDetailClient = ({ product }) => {
                         )}
                     </div>
 
-                   
+                   <AddToCartButton/>
                 
                 </div>
             </div>
