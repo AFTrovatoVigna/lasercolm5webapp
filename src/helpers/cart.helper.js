@@ -52,6 +52,36 @@ export async function AddtoCart(cartId, productId, router) {
     throw new Error(`Failed to add product to cart: ${error.message}`);
   }
 }
+export async function QuickAddtoCart(cartId, productId) {
+  try {
+    const cartId = localStorage.getItem('cartId');
+    if (!cartId) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Inicia sesion para poder añadir el producto'
+      });
+      return;
+    }
+    const res = await fetch(`${API_URL}/cart/${cartId}/${productId}`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    
+    if (res.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Agregado',
+        text: 'Producto agregado al carrito exitosamente.'
+      });
+    }
+    
+  } catch (error) {
+    throw new Error(`Failed to add product to cart: ${error.message}`);
+  }
+}
 
 export async function DeleteProductFromCart(cartId, productId, router) {
   // Prompt the user for confirmation
@@ -88,5 +118,3 @@ export async function DeleteProductFromCart(cartId, productId, router) {
     throw new Error(`Failed to delete product from cart: ${error.message}`);
   }
 }
-
-

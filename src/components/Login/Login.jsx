@@ -73,17 +73,10 @@ const Login = () => {
 
   return (
     <div className="relative flex items-center justify-center w-full min-h-screen mt-10 overflow-hidden bg-gradient-to-r from-pink-100 to-pink-200">
-      <video
-        src="/assets/videologinregister2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 object-cover w-full h-full"
-      >
-        Your browser does not support the video tag.
-      </video>
-
+      
+      <div>
+     
+      </div>
       <form 
         onSubmit={handleSubmit} 
         className="relative lg:w-[500px] w-full max-w-md p-8 bg-pink-200 text-black rounded-lg shadow-lg"
@@ -128,23 +121,30 @@ const Login = () => {
       </div>
       
 
-      <div className="flex items-center font-bold justify-center mt-5 space-x-1">
- 
- <GoogleLoginButton/>
- 
-
-   
-</div>
+      
 
 
         <h2 className='mt-3 text-center'>Todavía no te registraste?</h2>
         <Link href={'/register'} className='block p-2 mx-auto hover:text-pink-950 font-bold underline h-[30px]  text-center lg:text-lg  text-bold  text-pink-800 rounded-lg'>
           Registrate acá
         </Link>
+        <GoogleLoginButton/>
       </form>
+     
+      
     </div>
   )
 }
 
 export default Login
 
+/* <video
+        src="/assets/videologinregister2.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 object-cover w-full h-full"
+      >
+        Your browser does not support the video tag.
+      </video>*/
