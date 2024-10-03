@@ -139,19 +139,26 @@ const FiltroProductos = ({ productos }) => {
                 <Typography>Precio: ${precio[0]} - ${precio[1]}</Typography>
 
                 <Button
-                    variant="contained"
-                    onClick={filtrarProductos}
-                    style={{ marginTop: '20px' }}
-                >
-                    Aplicar Filtros
-                </Button>
-                <Button
-                    variant="outlined"
-                    onClick={borrarFiltros}
-                    style={{ marginTop: '10px', marginLeft: '10px' }}
-                >
-                    Borrar Filtros
-                </Button>
+  variant="contained"
+  onClick={filtrarProductos}
+  style={{ marginTop: '20px', backgroundColor: '#e91e63', color: 'white' }}
+>
+  Aplicar Filtros
+</Button>
+<Button
+  variant="outlined"
+  onClick={borrarFiltros}
+  style={{
+    marginTop: '10px',
+    marginLeft: '10px',
+    color: '#e91e63',
+    borderColor: '#e91e63',
+  }}
+>
+  Borrar Filtros
+</Button>
+
+
             </aside>
 
 
