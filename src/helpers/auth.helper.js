@@ -16,7 +16,7 @@ export async function register(userData) {
     userData.phone = Number(userData.phone); // Asegúrate de que sea un número
 
     try {
-        const res = await fetch(`http://localhost:3000/auth/register`, {
+        const res = await fetch(`${APIURL}/auth/register`, {
             method: `POST`,
             headers: {
                 "Content-type": "application/json"
@@ -38,19 +38,23 @@ export async function register(userData) {
 
 export async function login(userData) {
     try {
-        const res = await fetch(`http://localhost:3000/auth/login`, {
+        // Ensure you are using the environment variable
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+        const res = await fetch(`${API_URL}/auth/login`, {
             method: `POST`,
             headers: {
                 "Content-type": "application/json"
             },
-           body: JSON.stringify(userData)
-        })
-       if(res.ok) {
-        return res.json();
-       } else {
-        throw Error("Fallo el inicio de sesion")
-       }       
+            body: JSON.stringify(userData)
+        });
+
+        if(res.ok) {
+            return res.json();
+        } else {
+            throw new Error("Fallo el inicio de sesion");
+        }
     } catch (error) {
-        throw new Error(error)  
+        throw new Error(error);
     }
 }

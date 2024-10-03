@@ -6,7 +6,7 @@ import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import FiltroProductos from "@/components/Filtro/filtro";
 
 function PlacaMascotas() {
-
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const [products, setProducts ]= useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ function PlacaMascotas() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products/category/placasmascotas');
+                const response = await fetch(`${API_URL}/products/category/placasmascotas`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -28,7 +28,7 @@ function PlacaMascotas() {
         };
 
         fetchData();
-    }, []);
+    }, [API_URL]);
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
