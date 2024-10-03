@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 function Navbar() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
     const userSession = localStorage.getItem('userSession');
@@ -38,17 +39,11 @@ function Navbar() {
     
     setIsLoggedIn(false);
     
-    // Cerrar sesión de Google (NextAuth)
+ 
     await signOut({ callbackUrl: '/' });
     
-    // Redirigir al usuario a la página de inicio
-    router.push('/');
-  };
 
-  const logout = () => {
-    
-  
-   
+    router.push('/');
   };
 
   return (
@@ -59,14 +54,16 @@ function Navbar() {
             <img src="/assets/lasercol-logo.png" className="w-[150px] h-[50px]" alt="LaserCol Logo" />
           </div>
 
-          <div className="flex space-x-10 ml-36">
+      
+          <div className="hidden lg:flex space-x-10 ml-36 lg:ml-11">
             <Link href="/" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
             <Link href="/products" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
             <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
             <Link href="/designs" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
           </div>
 
-          <div className="flex items-center space-x-4">
+ 
+          <div className="hidden lg:flex items-center space-x-4">
             {isLoggedIn ? (
               <div className="flex space-x-4">
                 <Link href="/dashboarduser">
@@ -75,7 +72,6 @@ function Navbar() {
                 <Link href="/cart">
                   <img src="/assets/iconocarrito.png" className="w-6 h-6" alt="icono carrito" />
                 </Link>
-                {/* Logout Button */}
                 <button
                   onClick={handleLogout}
                   className="text-lg font-medium text-black transition duration-300 hover:text-pink-600"
@@ -94,10 +90,52 @@ function Navbar() {
               </div>
             )}
           </div>
+
+     
+          <div className="lg:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-black">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
         </div>
+
+       
+        {isOpen && (
+          <div className="lg:hidden mt-4 bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100 rounded-lg shadow-lg p-4">
+            <Link href="/" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
+            <Link href="/products" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
+            <Link href="/about" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
+            <Link href="/designs" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+
+            {isLoggedIn ? (
+              <>
+                <Link href="/dashboarduser" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Mi Cuenta</Link>
+                <Link href="/cart" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Carrito</Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600"
+                >
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">
+                  Iniciar Sesión
+                </Link>
+                <Link href="/register" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">
+                  Regístrate
+                </Link>
+              </>
+            )}
+          </div>
+        )}
       </nav>
     </div>
   );
 }
 
 export default Navbar;
+
