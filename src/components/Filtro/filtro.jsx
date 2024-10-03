@@ -6,7 +6,7 @@ const FiltroProductos = ({ productos }) => {
 
     const [category, setcategory] = useState('');
     const [color, setColor] = useState('');
-    const [precio, setPrecio] = useState([0, 1000]);
+    const [precio, setPrecio] = useState([0, 0]);
     const [categorys, setcategorys] = useState([]);
     const [colores, setcolores] = useState([]);
     const [productosFiltrados, setproductosFiltrados] = useState([]);
@@ -33,28 +33,37 @@ const FiltroProductos = ({ productos }) => {
                 console.log(producto);
 
                 if (precio[1] > 0 && category && color) {
-
-                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
-                    const categoryValida = category ? producto.category === category : true;
-                    const colorValido = color ? producto.color === color : true;
-                    return precioValido && categoryValida && colorValido;
+                    if (producto.category != null){
+                        
+                        const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
+                        const categoryValida = category ? producto.category.name === category : true;
+                        const colorValido = color ? producto.color === color : true;
+                        return precioValido && categoryValida && colorValido;
+                        
+                    }
                 } else if (precio[1] > 0 && color) {
 
                     const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
                     const colorValido = color ? producto.color === color : true;
                     return precioValido && colorValido;
                 } else if (precio[1] > 0 && category) {
+                    if (producto.category != null) {  
+                        
+                        
+                        const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
+                        const categoryValida = category ? producto.category.name === category : true;
+    
+                        return precioValido && categoryValida;
+                    }
 
-
-                    const precioValido = producto.valor >= precio[0] && producto.valor <= precio[1];
-                    const categoryValida = category ? producto.category === category : true;
-
-                    return precioValido && categoryValida;
 
                 } else if (category && color) {
-                    const categoryValida = category ? producto.category === category : true;
-                    const colorValido = color ? producto.color === color : true;
-                    return categoryValida && colorValido;
+                    if (producto.category != null){
+                        
+                        const categoryValida = category ? producto.category.name === category : true;
+                        const colorValido = color ? producto.color === color : true;
+                        return categoryValida && colorValido;
+                    }  
                 } else if (precio[1] > 0) {
 
                     console.log(producto.valor, "<=", precio[1]);
@@ -78,6 +87,12 @@ const FiltroProductos = ({ productos }) => {
             setproductosFiltrados(arrayProductos)
         }
     };
+    const borrarFiltros = () => {
+        setcategory('');
+        setColor('');
+        setPrecio([0, 0]);
+        setproductosFiltrados([]); 
+};
 
     return (
         <div className="flex">
@@ -124,12 +139,26 @@ const FiltroProductos = ({ productos }) => {
                 <Typography>Precio: ${precio[0]} - ${precio[1]}</Typography>
 
                 <Button
-                    variant="contained"
-                    onClick={filtrarProductos}
-                    style={{ marginTop: '20px' }}
-                >
-                    Aplicar Filtros
-                </Button>
+  variant="contained"
+  onClick={filtrarProductos}
+  style={{ marginTop: '20px', backgroundColor: '#e91e63', color: 'white' }}
+>
+  Aplicar Filtros
+</Button>
+<Button
+  variant="outlined"
+  onClick={borrarFiltros}
+  style={{
+    marginTop: '10px',
+    marginLeft: '10px',
+    color: '#e91e63',
+    borderColor: '#e91e63',
+  }}
+>
+  Borrar Filtros
+</Button>
+
+
             </aside>
 
 

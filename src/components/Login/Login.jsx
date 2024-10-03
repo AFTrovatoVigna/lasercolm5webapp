@@ -4,7 +4,7 @@
 import { login } from '@/helpers/auth.helper'
 import { validateLogin } from '@/helpers/validateLogin'
 import { signIn, useSession, signOut } from 'next-auth/react';
-
+import GoogleLoginButton from '../GoogleLoginButton';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -73,17 +73,10 @@ const Login = () => {
 
   return (
     <div className="relative flex items-center justify-center w-full min-h-screen mt-10 overflow-hidden bg-gradient-to-r from-pink-100 to-pink-200">
-      <video
-        src="/assets/videologinregister2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 object-cover w-full h-full"
-      >
-        Your browser does not support the video tag.
-      </video>
-
+      
+      <div>
+     
+      </div>
       <form 
         onSubmit={handleSubmit} 
         className="relative lg:w-[500px] w-full max-w-md p-8 bg-pink-200 text-black rounded-lg shadow-lg"
@@ -127,25 +120,31 @@ const Login = () => {
         </button>
       </div>
       
-      <div className="flex items-center justify-center mt-5 space-x-1 font-bold">
-  <h1>Ingresar con Google</h1>
-  <button
-    onClick={() => signIn('google', { callbackUrl: '/' })}
-    className="flex items-center p-3 bg-pink-200"
-  >
-    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
-    
-  </button>
-</div>
+
+      
 
 
         <h2 className='mt-3 text-center'>Todavía no te registraste?</h2>
         <Link href={'/register'} className='block p-2 mx-auto hover:text-pink-950 font-bold underline h-[30px]  text-center lg:text-lg  text-bold  text-pink-800 rounded-lg'>
           Registrate acá
         </Link>
+        <GoogleLoginButton/>
       </form>
+     
+      
     </div>
   )
 }
 
 export default Login
+
+/* <video
+        src="/assets/videologinregister2.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 object-cover w-full h-full"
+      >
+        Your browser does not support the video tag.
+      </video>*/

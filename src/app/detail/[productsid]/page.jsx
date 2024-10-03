@@ -12,7 +12,7 @@ async function ProductDetail({ params }) {
     return (
         <div className="max-w-6xl mx-auto mt-[100px] p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
             <div className="flex flex-col gap-8 md:flex-row">
-                {/* Product Image */}
+            
                 <div className="flex items-center justify-center flex-1">
                     <Image 
                         src={product.imgUrl} 
@@ -23,11 +23,11 @@ async function ProductDetail({ params }) {
                     />
                 </div>
 
-                {/* Product Details */}
+          
                 <div className="flex flex-col justify-between flex-1">
-                    {/* Product Name */}
+            
                     <h1 className="mb-4 text-3xl font-bold text-gray-800">{product.nombre}</h1>
-                    {/* Product Highlights */}
+
                     <div className="mb-6 space-y-2">
                         <h2 className="text-lg font-semibold text-gray-600">Color: {product.color}</h2>
                         <p className="text-gray-600"><span className="font-medium">Material:</span> {product.material}</p>
@@ -37,11 +37,11 @@ async function ProductDetail({ params }) {
                         </p>
                     </div>
 
-                    {/* Product Price */}
+             
                     <h3 className="mb-6 text-2xl font-bold text-gray-800">Precio: {product.valor}</h3>
 
-                    {/* Add to Cart Button */}
-                    <AddToCartButton productId={product.id} /> {/* Use the client component */}
+                   
+               
                 </div>
             </div>
         </div>

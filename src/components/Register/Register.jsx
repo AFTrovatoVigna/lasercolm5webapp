@@ -7,6 +7,7 @@ import { register } from '@/helpers/auth.helper';
 import { CreateCart } from '@/helpers/cart.helper';
 import Swal from 'sweetalert2';
 import { signIn, useSession, signOut } from 'next-auth/react';
+import GoogleCustomerRegisterButton from '../GoogleRegisterButton';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -222,7 +223,7 @@ const RegisterForm = () => {
           <div className="col-span-2 lg:col-span-1">
             <label htmlFor="birthDate" className=" block mb-1">Fecha de nacimiento</label>
             <input
-              type="date" // Cambiado a "date" para un formato más adecuado
+              type="date" 
               id="birthDate"
               name="birthDate"
               placeholder="Ingresa tu fecha de nacimiento" 
@@ -240,16 +241,11 @@ const RegisterForm = () => {
           >
             Registrarse
           </button>
-          <div className="flex items-center ml-16 font-bold justify-center mt-5 space-x-1">
-  <h1>Ingresar con Google</h1>
-  <button
-    onClick={() => signIn('google', { callbackUrl: '/' })}
-    className="bg-pink-200 p-3 flex items-center"
-  >
-    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
-    
-  </button>
-</div>
+          
+
+  <GoogleCustomerRegisterButton/>
+  
+
 
          
         </form>
@@ -260,3 +256,10 @@ const RegisterForm = () => {
 
 export default RegisterForm;
 
+/* <button
+    onClick={() => signIn('google', { callbackUrl: '/' })}
+    className="bg-pink-200 p-3 flex items-center"
+  >
+    <img src="/assets/googleicono.png" alt="Google Icon" className='bg-pink-400 p-1 rounded-[50%] ring-pink-800'/>
+    
+  </button>*/
