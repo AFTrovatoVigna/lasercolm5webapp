@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="bg-pink-100">
-      {/* Sección de video */}
+    
       <div className="w-[100%] h-[200px] lg:h-[400px] mt-[50px] overflow-hidden">
  
   <video

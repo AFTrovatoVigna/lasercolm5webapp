@@ -46,7 +46,7 @@ const GoogleCustomerRegisterButton = () => {
   }, [router]);
 
   return (
-    <div className="flex justify-center items-center ml-28 border border-[#f8263a] rounded-md w-full p-2 mb-5">
+    <div className="flex justify-center items-center  border border-pink-700 rounded-md lg:w-[630px] hover:bg-pink-600 p-2 mb-5">
       <button onClick={handleGoogleRegister} className="flex">
         <Image
           src={"/assets/googleicono.png"}

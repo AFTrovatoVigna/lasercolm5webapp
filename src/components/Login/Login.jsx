@@ -54,14 +54,19 @@ const Login = () => {
   }, [dataUser])
 
   return (
-    <div className="relative flex items-center justify-center w-full min-h-screen mt-10 overflow-hidden bg-gradient-to-r from-pink-100 to-pink-200">
+    <div
+    className=" flex items-center justify-center lg:p-12 bg-cover bg-center"
+    style={{
+      backgroundImage: "url('/assets/fotologinregister1.png')",
+    }}
+  >
       
       <div>
      
       </div>
       <form 
         onSubmit={handleSubmit} 
-        className="relative lg:w-[500px] w-full max-w-md p-8 bg-pink-200 text-black rounded-lg shadow-lg"
+        className="relative lg:w-[500px] w-full max-w-md p-8 mt-20 lg:mt-24 bg-pink-200 text-black rounded-lg shadow-lg"
       >
         <h2 className="mb-6 text-2xl font-bold text-center">Iniciá sesión</h2>
 

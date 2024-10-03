@@ -62,7 +62,7 @@ const ModalQuickBuy = ({ show, onClose, product, cartId }) => {
 
           <button
             onClick={handleAddToCart}
-            className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition ${
+            className={`bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-700 transition ${
               loading ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={loading}
