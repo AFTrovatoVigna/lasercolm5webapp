@@ -76,5 +76,3 @@ export async function DeleteProductFromCart(cartId, productId, router) {
     throw new Error(`Failed to delete product from cart: ${error.message}`);
   }
 }
-
-
