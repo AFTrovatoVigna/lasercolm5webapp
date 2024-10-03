@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar/navbar.jsx";
 import "./globals.css";
 
 import React from "react";
-import Footer from "@/components/Navbar/footer/Footer";
+import Footer from "@/components/footer/Footer";
 import Providers from "./Providers";
 
 

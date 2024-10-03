@@ -1,9 +1,9 @@
-
+/* eslint-disable @next/next/no-img-element */
 "use client"; 
 
 import React, { useState } from 'react';
 import Image from "next/image";
-import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 
 
 const ProductDetailClient = ({ product }) => {

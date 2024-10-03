@@ -1,18 +1,23 @@
-"use client"
-import ProductGridComponent from "@/components/Cards"
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
 import FiltroProductos from "@/components/Filtro/filtro";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-function product() {
+function Product() {
     const [productos, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // Access the API URL here
+    const APIURL = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/products');
+                const response = await fetch(`${APIURL}/products`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -27,9 +32,11 @@ function product() {
         };
 
         fetchData();
-    }, []);
+    }, [APIURL]); // Add APIURL as a dependency
+
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
+
     return (
         <div>
             <div>
@@ -92,8 +99,7 @@ function product() {
         </section>
             <FiltroProductos productos={productos} />
         </div>
-
-    )
+    );
 }
 
-export default product;
+export default Product;

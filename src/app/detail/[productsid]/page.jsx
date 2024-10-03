@@ -1,6 +1,5 @@
-import ProductDetailClient from "@/components/ProductDetailClient/ProductDetailClient";import Image from "next/image";
+import ProductDetailClient from "@/components/ProductDetailClient/ProductDetailClient";
 import { fetchProductById } from "@/Server/fetchProducts.jsx";
-import AddToCartButton from '@/components/AddToCartButton/AddToCartButton'; 
 
 async function ProductDetail({ params }) {
     const product = await fetchProductById(params.productsid);
