@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { CreateCart } from '@/helpers/cart.helper';
+import { AddtoCart, CreateCart } from '@/helpers/cart.helper';
 
 const ModalQuickBuy = ({ show, onClose, product, cartId }) => {
   const [quantity, setQuantity] = useState(1);
@@ -16,7 +16,7 @@ const ModalQuickBuy = ({ show, onClose, product, cartId }) => {
       setError(null);
 
    
-      await CreateCart(cartId, product.id, quantity);
+      await AddtoCart(cartId, product.id, quantity);
       onClose(); 
     } catch (err) {
       setError('Error al agregar el producto al carrito. Inténtalo de nuevo.');

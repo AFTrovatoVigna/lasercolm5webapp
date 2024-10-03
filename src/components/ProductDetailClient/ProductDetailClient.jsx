@@ -94,7 +94,7 @@ const ProductDetailClient = ({ product }) => {
                     </div>
 
                    
-                   
+                
                 </div>
             </div>
         </div>
