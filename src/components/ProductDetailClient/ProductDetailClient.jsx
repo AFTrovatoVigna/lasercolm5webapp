@@ -94,7 +94,7 @@ const ProductDetailClient = ({ product }) => {
                         )}
                     </div>
 
-                   <AddToCartButton/>
+                    <AddToCartButton productId={product.id} /> 
                 
                 </div>
             </div>
