@@ -1,7 +1,4 @@
-import ProductCard from "@/components/Card";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
-import Link from "next/link";
-
 
 export default function Home() {
   return (
@@ -242,9 +239,10 @@ export default function Home() {
                 ))}
               </div>
               <p className="italic text-gray-700">
-                "Trabajo con esta empresa desde hace años y siempre me sorprenden con su dedicación y profesionalismo. Las piezas que personalizan son únicas y hechas con un esmero que se nota en cada detalle. ¡Excelente experiencia!"
+                &quot;Trabajo con esta empresa desde hace años y siempre me sorprenden con su dedicación y profesionalismo. Las piezas que personalizan son únicas y hechas con un esmero que se nota en cada detalle. ¡Excelente experiencia!&quot;
               </p>
               <p className="mt-4 text-gray-500">— Juan Pérez</p>
+
             </div>
 
            
@@ -263,7 +261,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="italic text-gray-700">
-                "Me encanta cómo mi diseño quedó perfecto en el llavero que pedí. El grabado láser es impecable y el servicio al cliente es muy atento. ¡Definitivamente volveré a comprar!"
+                `Me encanta cómo mi diseño quedó perfecto en el llavero que pedí. El grabado láser es impecable y el servicio al cliente es muy atento. ¡Definitivamente volveré a comprar!`
               </p>
               <p className="mt-4 text-gray-500">— María López</p>
             </div>
@@ -284,7 +282,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="italic text-gray-700">
-                "La calidad de los productos es insuperable y los diseños personalizados me encantan. Sin duda seguiré comprando más de sus productos."
+                `Esta empresa ha superado todas mis expectativas. La calidad del grabado y la personalización son sobresalientes. El proceso fue fácil y el resultado final fue exactamente lo que imaginé.`
               </p>
               <p className="mt-4 text-gray-500">— Pedro Gómez</p>
             </div>
@@ -305,7 +303,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="italic text-gray-700">
-                "La atención al cliente fue excelente y mi pedido llegó en perfectas condiciones. El grabado es nítido y el material del accesorio es de muy buena calidad."
+                `Cada pieza que he recibido es una obra de arte. La personalización es de primera, se nota la calidad en cada detalle. Sin duda, una de las mejores empresas en su campo.`
               </p>
               <p className="mt-4 text-gray-500">— Ana García</p>
             </div>
