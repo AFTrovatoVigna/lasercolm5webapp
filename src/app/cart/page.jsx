@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { GetCart } from '@/helpers/cart.helper';
 import CartProduct from '@/components/CartProduct/CartProduct';
 import { useRouter } from 'next/navigation'; // Import useRouter
+import CartSectionDetails from '@/components/CartSectionDetails/CartSectionDetails';
 
 const Cart = () => {
   const router = useRouter(); // Initialize the router
@@ -72,6 +73,7 @@ const Cart = () => {
               </li>
             ))}
           </ul>
+          <CartSectionDetails products={cart.products} />
           <p>Se realizó la orden de compra: {cart.isPurchased ? "Yes" : "No"}</p>
         </>
       )}
