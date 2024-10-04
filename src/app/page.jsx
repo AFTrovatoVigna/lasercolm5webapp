@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
      
-      <div className="flex items-center py-2 mx-5 lg:mt-20">
+      <div className="flex items-center py-2 mx-5 lg:mt-14 lg:mb-[-90px]">
         <span className="text-gray-700 text-[18px] lg:text-[20px] whitespace-nowrap">
           Explora por categoría
         </span>
@@ -53,8 +53,8 @@ export default function Home() {
 
       <section className="lg:mt-24 mt-10">
 
-      <h2 className="text-center lg:text-4xl font-semibold mb-2">Nuestros trabajos</h2>
-      <p className="text-center lg:text-xl  text-gray-600 mb-8">
+      <h2 className="text-center lg:text-4xl font-semibold mb-2 lg:mb-9">Nuestros trabajos</h2>
+      <p className="text-center lg:text-xl lg:mt-10  text-gray-600 mb-8">
         A continuación te presentamos una selección de los trabajos realizados en nuestro estudio.
       </p>
 
