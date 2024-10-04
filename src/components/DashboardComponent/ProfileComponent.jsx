@@ -1,32 +1,46 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { GetUserById } from '@/helpers/auth.helper';
+import Link from 'next/link';
 
 const ProfileComponent = () => {
-  const { data: session } = useSession();
   const router = useRouter()
+  const [userSession, setUserSession] = useState(null)
+  const [userData, setUserData] = useState(null) // Para almacenar los datos del usuario obtenidos
 
-  const [userSession, setUsserSession] = useState()
-
+  // Cargar la sesión de usuario desde localStorage
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
-      const userData = localStorage.getItem("userSession")
-      if (userData) {
-        setUsserSession(JSON.parse(userData))
+      const userSession = localStorage.getItem("userSession")
+      
+      if (userSession) {
+        const parsedData = JSON.parse(userSession)
+        setUserSession(parsedData);
       } else {
-        router.push("/login")
+        router.push("/login") // Redirige si no encuentra sesión
       }
     }
   }, [router])
 
+  // Obtener los datos del usuario por su ID usando el token
   useEffect(() => {
-    if (userSession && !userSession.token) {
-      router.push("/login")
-    }
-  }, [userSession, router])
+    const fetchUserData = async () => {
+      if (userSession) {
+        try {
+          const user = await GetUserById(userSession.id, userSession.token);
+          setUserData(user); // Almacena los datos del usuario en el estado
+        } catch (error) {
+          console.error("Error fetching user:", error);
+          router.push("/login"); // Si hay un error, redirige al login
+        }
+      }
+    };
+
+    fetchUserData(); // Llama a la función async
+  }, [userSession, router]) 
+
 
 
   return (
@@ -43,7 +57,7 @@ const ProfileComponent = () => {
         className="w-[150px] lg:w-[200px] mt-20 h-[150px] lg:h-[200px] object-cover mx-auto rounded-full bg-gray-300"
       />
       <h2 className="mt-4 lg:mt-4 text-lg lg:text-xl font-semibold lg:font-bold text-gray-700">
-        ¡HOLA BELÉN!
+        ¡HOLA {userData?.name}!
       </h2>
     </div>
     <nav className="mt-6 lg:mt-10">
@@ -78,27 +92,27 @@ const ProfileComponent = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <div>
           <h4 className="text-gray-600">Nombre</h4>
-          <p className="text-gray-800">{userSession?.id}</p>
+          <p className="text-gray-800">{userData?.name}</p>
         </div>
         <div>
           <h4 className="text-gray-600">Teléfono</h4>
-          <p className="text-gray-800">{userSession?.id}</p>
+          <p className="text-gray-800">{userData?.phone}</p>
         </div>
         <div>
           <h4 className="text-gray-600">Email</h4>
-          <p className="text-gray-800">{userSession?.id}</p>
+          <p className="text-gray-800">{userData?.email}</p>
         </div>
         <div>
           <h4 className="text-gray-600">DNI</h4>
-          <p className="text-gray-800">No especificado</p>
+          <p className="text-gray-800">{userData?.Dni}</p>
         </div>
         <div>
           <h4 className="text-gray-600">Mi dirección de envío</h4>
-          <p className="text-gray-800">{userSession?.id}</p>
+          <p className="text-gray-800">{userData?.address}</p>
         </div>
         <div>
           <h4 className="text-gray-600">Fecha de nacimiento</h4>
-          <p className="text-gray-800">No especificado</p>
+          <p className="text-gray-800">{userData?.birthDate}</p>
         </div>
       </div>
       <div className="text-right">

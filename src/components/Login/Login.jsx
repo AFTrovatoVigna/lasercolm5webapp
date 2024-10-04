@@ -3,7 +3,7 @@
 
 import { login } from '@/helpers/auth.helper'
 import { validateLogin } from '@/helpers/validateLogin'
-import { signIn, useSession, signOut } from 'next-auth/react';
+// import { signIn, useSession, signOut } from 'next-auth/react';
 import GoogleLoginButton from '../GoogleLoginButton';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -12,7 +12,7 @@ import Link from 'next/link'
 
 const Login = () => {
   const APIURL = process.env.NEXT_PUBLIC_API_URL
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const router = useRouter()
   const initialState = { email: '', password: '' }
   
@@ -27,36 +27,24 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Debug API_URL
-      console.log("API_URL:", APIURL);
-  
-      // Attempt to login
       const response = await login(dataUser);
-      console.log("Response from login:", response); // Debugging
-  
       if (!response) {
         Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente");
         return;
       }
+
+      const { token, id } = response; 
   
-      const { token, id } = response; // Get token and user ID
-      console.log("User ID:", id, "Token:", token);
-  
-      // Store token and user ID in localStorage
       localStorage.setItem("userSession", JSON.stringify({ token, id }));
   
-      // Fetch the cart using the user ID
-      const cartResponse = await fetch(`${APIURL}/cart/${id}`); // Use correct endpoint for carts
+      const cartResponse = await fetch(`${APIURL}/cart/${id}`);
       if (!cartResponse.ok) {
         throw new Error("Failed to fetch cart");
       }
       const cartData = await cartResponse.json();
-      console.log(cartData); // Fix typo
-  
-      // Store the cart ID in localStorage
+    
       localStorage.setItem("cartId", cartData.id);
   
-      // Notify the user and redirect
       Swal.fire("Te logueaste correctamente");
       router.push("/");
     } catch (error) {
