@@ -58,3 +58,25 @@ export async function login(userData) {
         throw new Error(error);
     }
 }
+
+export async function GetUserById(userId, token) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  try {
+      const res = await fetch(`${API_URL}/users/${userId}`, {
+          method: 'GET',
+          headers: {
+              Authorization: `Bearer ${token}`
+          }
+      });
+      
+      if (!res.ok) {
+          throw new Error(`Error: ${res.status} ${res.statusText}`);
+      }
+
+      const user = await res.json();
+      return user;
+  } catch (error) {
+      console.error('Error fetching user:', error);
+      throw new Error(error);
+  }
+}
