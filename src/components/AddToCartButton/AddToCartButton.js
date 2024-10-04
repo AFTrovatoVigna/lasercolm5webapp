@@ -49,7 +49,7 @@ const AddToCartButton = ({ productId }) => {
   return (
     <button 
       onClick={handleAddToCart}
-      className="px-6 py-3 font-semibold text-white transition duration-200 bg-yellow-500 rounded-lg shadow hover:bg-yellow-600">
+      className="px-6 py-3 font-semibold text-white transition duration-200 bg-pink-500 rounded-lg shadow hover:bg-pink-700">
       Agregar al carrito
     </button>
   );
