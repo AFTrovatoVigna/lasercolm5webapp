@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
      
-      <div className="flex items-center py-4 mx-5">
+      <div className="flex items-center py-2 mx-5 lg:mt-20">
         <span className="text-gray-700 text-[18px] lg:text-[20px] whitespace-nowrap">
           Explora por categoría
         </span>
@@ -157,7 +157,7 @@ export default function Home() {
     <div className=" p-6 lg:mt-14">
 
       <h1 className="text-center lg:text-3xl font-bold mb-5 lg:mb-16">
-        Razones Principales para elegirnos
+        Razones para elegirnos
       </h1>
 
 
