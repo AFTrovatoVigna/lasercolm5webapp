@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { signOut } from "next-auth/react";
 
 function Navbar() {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
@@ -52,9 +53,7 @@ function Navbar() {
       <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 shadow-md bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
-            <Link href='/'>
             <img src="/assets/lasercol-logo.png" className="w-[150px] h-[50px]" alt="LaserCol Logo" />
-            </Link>
           </div>
 
       
