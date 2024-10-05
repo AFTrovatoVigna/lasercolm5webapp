@@ -3,16 +3,16 @@
 
 import { login } from '@/helpers/auth.helper'
 import { validateLogin } from '@/helpers/validateLogin'
-// import { signIn, useSession, signOut } from 'next-auth/react';
 import GoogleLoginButton from '../GoogleLoginButton';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import Link from 'next/link'
+import { useAuth } from '@/context/AuthContext'; // Import the useAuth hook
 
 const Login = () => {
   const APIURL = process.env.NEXT_PUBLIC_API_URL
-  // const { data: session } = useSession();
+  const { setIsLoggedIn } = useAuth(); // Now this should work
   const router = useRouter()
   const initialState = { email: '', password: '' }
   
@@ -25,24 +25,23 @@ const Login = () => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Make sure to call preventDefault before doing anything else
     try {
-      const response = await login(dataUser);
+      const response = await login(dataUser); // Pass dataUser instead of event
       if (!response) {
         Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente");
         return;
       }
 
       const { token, id } = response; 
-  
       localStorage.setItem("userSession", JSON.stringify({ token, id }));
-  
+      setIsLoggedIn(true); 
+
       const cartResponse = await fetch(`${APIURL}/cart/${id}`);
       if (!cartResponse.ok) {
         throw new Error("Failed to fetch cart");
       }
       const cartData = await cartResponse.json();
-    
       localStorage.setItem("cartId", cartData.id);
   
       Swal.fire("Te logueaste correctamente");
@@ -52,24 +51,19 @@ const Login = () => {
       console.error(error);
     }
   };
-  
 
   useEffect(() => {
-    const errors = validateLogin(dataUser)
-    setErrors(errors)
-  }, [dataUser])
+    const validationErrors = validateLogin(dataUser);
+    setErrors(validationErrors);
+  }, [dataUser]);
 
   return (
     <div
-    className=" flex items-center justify-center lg:p-12 bg-cover bg-center"
-    style={{
-      backgroundImage: "url('/assets/fotologinregister1.png')",
-    }}
-  >
-      
-      <div>
-     
-      </div>
+      className="flex items-center justify-center lg:p-12 bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/assets/fotologinregister1.png')",
+      }}
+    >
       <form 
         onSubmit={handleSubmit} 
         className="relative lg:w-[500px] w-full max-w-md p-8 mt-20 lg:mt-24 bg-pink-200 text-black rounded-lg shadow-lg"
@@ -103,41 +97,24 @@ const Login = () => {
           {errors.password && <p className="text-red-600">{errors.password}</p>}
         </div>
 
-      <div className=''>
-        <button 
-          type="submit" 
-          disabled={!!errors.email} 
-          className='w-full p-2 mt-4 text-white transition-colors bg-pink-500 rounded cursor-pointer hover:bg-pink-600'
-        >
-          Ingresar
-        </button>
-      </div>
-      
-
-      
-
+        <div className=''>
+          <button 
+            type="submit" 
+            disabled={!!errors.email} 
+            className='w-full p-2 mt-4 text-white transition-colors bg-pink-500 rounded cursor-pointer hover:bg-pink-600'
+          >
+            Ingresar
+          </button>
+        </div>
 
         <h2 className='mt-3 text-center'>Todavía no te registraste?</h2>
-        <Link href={'/register'} className='block p-2 mx-auto hover:text-pink-950 font-bold underline h-[30px]  text-center lg:text-lg  text-bold  text-pink-800 rounded-lg'>
+        <Link href={'/register'} className='block p-2 mx-auto hover:text-pink-950 font-bold underline h-[30px] text-center lg:text-lg text-bold text-pink-800 rounded-lg'>
           Registrate acá
         </Link>
         <GoogleLoginButton/>
       </form>
-     
-      
     </div>
   )
 }
 
-export default Login
-
-/* <video
-        src="/assets/videologinregister2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 object-cover w-full h-full"
-      >
-        Your browser does not support the video tag.
-      </video>*/
+export default Login;
