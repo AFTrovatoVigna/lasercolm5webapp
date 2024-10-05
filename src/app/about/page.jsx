@@ -16,8 +16,6 @@ const About = () => {
           </p>
         </header>
 
-      
-
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 items-center">
   <div className="flex justify-center">
     <Image
@@ -53,7 +51,6 @@ const About = () => {
     </div>
   </div>
 </section>
-
 
         <div className='flex justify-self-center lg:w-[500px] lg:ml-44 '>
           <Link href="/products" className="bg-pink-500 lg:w-[500px] text-center lg:mt-14  text-white font-bold py-2 px-4 rounded-full hover:bg-pink-600 transition duration-300">
