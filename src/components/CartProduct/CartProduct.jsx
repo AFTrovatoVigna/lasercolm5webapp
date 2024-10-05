@@ -61,10 +61,6 @@ const CartProduct = ({ product, cartId, router, onDelete }) => { // Accept route
   </button>
 </div>
 
-
-
-
-
  <div>
   <CartSectionDetails/>
  </div>
