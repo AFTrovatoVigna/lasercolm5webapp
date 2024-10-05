@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from 'react';
-import { GetCart } from '@/helpers/cart.helper';
+import { GetCart, DeleteProductFromCart } from '@/helpers/cart.helper';
 import CartProduct from '@/components/CartProduct/CartProduct';
 import { useRouter } from 'next/navigation'; // Import useRouter
 import CartSectionDetails from '@/components/CartSectionDetails/CartSectionDetails';
@@ -12,6 +11,7 @@ const Cart = () => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state
   const [cartId, setCartId] = useState(null); // State to store cartId
+  const [refreshCart, setRefreshCart] = useState(false); // State to trigger cart refresh
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -43,7 +43,17 @@ const Cart = () => {
     };
 
     fetchCart();
-  }, [userData]);
+  }, [userData, refreshCart]); // Include refreshCart in the dependency array
+
+  // Function to refresh cart
+  const handleDeleteProduct = async (cartId, productId) => {
+    try {
+      await DeleteProductFromCart(cartId, productId, router);
+      setRefreshCart(!refreshCart); // Toggle refreshCart to trigger useEffect
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
 
   // Check if cart is empty or products array is empty
   const cartIsEmpty = cart && (!cart.products || cart.products.length === 0);
@@ -69,7 +79,12 @@ const Cart = () => {
           <ul>
             {cart.products.map((product) => (
               <li key={product.id}>
-                <CartProduct product={product} cartId={cartId} router={router} /> {/* Pass router as a prop */}
+                <CartProduct 
+                  product={product} 
+                  cartId={cartId} 
+                  router={router} 
+                  onDelete={handleDeleteProduct} // Pass handleDeleteProduct as prop
+                />
               </li>
             ))}
           </ul>

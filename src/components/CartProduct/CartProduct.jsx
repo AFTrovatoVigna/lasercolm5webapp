@@ -5,22 +5,21 @@ import { DeleteProductFromCart } from '@/helpers/cart.helper';
 import Link from 'next/link';
 import CartSectionDetails from '../CartSectionDetails/CartSectionDetails';
 
-const CartProduct = ({ product, cartId, router }) => { // Accept router as a prop
+const CartProduct = ({ product, cartId, router, onDelete }) => { // Accept router as a prop
   const handleDelete = async () => {
-    await DeleteProductFromCart(cartId, product.id, router); // Call the delete function
+    await onDelete(cartId, product.id);
   };
-
   return (
     <>
- <div className='grid grid-cols-1 sm:grid-cols-[100px_auto_auto_auto_auto] gap-4 items-center p-4 bg-white shadow-lg rounded-xl border border-gray-300'>
-  {/* Primera columna: Imagen */}
-  <div className='flex justify-center sm:justify-start'>
-    <img
-      className='object-cover w-[80px] sm:w-[100px] h-auto rounded-lg shadow-sm'
-      src={product.imgUrl}
-      alt={product.nombre}
-    />
-  </div>
+      <div className='grid grid-cols-1 sm:grid-cols-[100px_auto_auto_auto_auto] gap-4 items-center p-4 bg-white shadow-lg rounded-xl border border-gray-300'>
+      {/* Primera columna: Imagen */}
+        <div className='flex justify-center sm:justify-start'>
+          <img
+            className='object-cover w-[80px] sm:w-[100px] h-auto rounded-lg shadow-sm'
+            src={product.imgUrl}
+            alt={product.nombre}
+          />
+        </div>
 
   {/* Segunda columna: Detalles del producto */}
   <div className='space-y-1 text-center sm:text-left'>
