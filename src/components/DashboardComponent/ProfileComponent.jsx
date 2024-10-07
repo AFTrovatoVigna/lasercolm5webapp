@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -9,42 +9,43 @@ const ProfileComponent = () => {
   const router = useRouter();
   const [userSession, setUserSession] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); 
-  const [editedData, setEditedData] = useState({}); 
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedData, setEditedData] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [selectedImage, setSelectedImage] = useState(null); 
 
   // Cargar la sesión de usuario desde localStorage
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const userSession = localStorage.getItem("userSession");
-      
+
       if (userSession) {
         const parsedData = JSON.parse(userSession);
         setUserSession(parsedData);
       } else {
-        router.push("/login"); // Redirige si no encuentra sesión
+        router.push("/login");
       }
     }
   }, [router]);
 
-  // Obtener los datos del usuario por su ID usando el token
+ 
   useEffect(() => {
     const fetchUserData = async () => {
       if (userSession) {
         try {
           const user = await GetUserById(userSession.id, userSession.token);
           setUserData(user);
-          setEditedData(user); // Inicializa los datos editados con los actuales
+          setEditedData(user); 
         } catch (error) {
           console.error("Error fetching user:", error);
-          router.push("/login"); // Si hay un error, redirige al login
+          router.push("/login"); 
         }
       }
     };
 
-    fetchUserData(); 
+    fetchUserData();
   }, [userSession, router]);
 
-  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedData({
@@ -53,14 +54,64 @@ const ProfileComponent = () => {
     });
   };
 
-  return (
-    <div className="flex flex-col lg:flex-row lg:mt-[14px] lg:h-[500px] bg-[#f3dcdc]">
  
-      <div className="w-full lg:w-1/4 p-4 lg:p-6 h-[470px] lg:h-[550px] bg-white shadow-lg rounded-lg">
+  const openModal = () => setIsModalOpen(true);
+
+ 
+  const closeModal = () => {
+    setSelectedImage(null);
+    setIsModalOpen(false);
+  };
+
+  
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+ 
+  const handleSaveImage = async () => {
+    if (!selectedImage) return;
+  
+    const formData = new FormData();
+    formData.append("file", selectedImage);  
+  
+    try {
+      const response = await fetch(`http://localhost:3000/file/uploadImageUser/${userSession.id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${userSession.token}`,
+        },
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const updatedUser = await response.json();
+        setUserData(updatedUser);
+        closeModal(); // Cerrar modal
+      } else {
+        console.error("Error uploading image");
+      }
+    } catch (error) {
+      console.error("Error uploading image", error);
+    }
+  };
+
+  return (
+    <div className="flex flex-col lg:flex-row lg:mt-[14px] lg:h-[560px] bg-pink-100">
+
+      <div className="w-full lg:w-1/4 p-4 lg:p-6 h-[470px] lg:h-[560px] bg-white shadow-lg rounded-lg">
         <div className="text-center">
-          <img src="/assets/userphoto.png" alt="" className='className="w-[150px] lg:w-[200px] mt-20 h-[150px] lg:h-[200px] object-cover mx-auto rounded-full bg-gray-300"' />
-            
-          
+          <img
+            src={userData?.profileImage || "/assets/userphoto.png"}
+            alt=""
+            className='className="w-[150px] lg:w-[150px] mt-20 h-[150px] lg:h-[150px] object-cover mx-auto rounded-full bg-gray-300"'
+          />
+          <button onClick={openModal} className="mt-4 text-pink-800 hover:underline">
+            Editar Foto
+          </button>
           <h2 className="mt-4 lg:mt-4 text-lg lg:text-xl font-semibold lg:font-bold text-gray-700">
             ¡Hola {userData?.name}!
           </h2>
@@ -68,7 +119,7 @@ const ProfileComponent = () => {
         <nav className="mt-6 lg:mt-10">
           <ul className="space-y-2 text-sm lg:text-lg">
             <li>
-              <a href="#" className="flex items-center text-[#C4AC23] font-semibold hover:underline">
+              <a href="#" className="flex items-center text-pink-800 font-semibold hover:underline">
                 <span>👤 Perfil</span>
               </a>
             </li>
@@ -86,11 +137,11 @@ const ProfileComponent = () => {
         </nav>
       </div>
 
-      <div className="w-full lg:w-3/4 p-2 lg:p-6 bg-[#f3dcdc] lg:mt-36 rounded-lg lg:h-[510px]">
+      <div className="w-full lg:w-3/4 p-2 lg:p-6  lg:mt-36 rounded-lg lg:h-[400px]">
         <h3 className="text-xl lg:text-2xl text-start lg:ml-5 rounded-xl p-2 mb-4 font-semibold">
-          MI PERFIL
+          MIS DATOS PERSONALES
         </h3>
-        <div className="h-auto lg:h-[315px] p-4 lg:p-6 rounded-lg shadow-lg">
+        <div className="h-auto lg:h-[295px] p-4 lg:p-6 rounded-lg ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             <div>
               <h4 className="text-gray-600">Nombre</h4>
@@ -192,8 +243,9 @@ const ProfileComponent = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+
+      
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray -800 bg-opacity-50"> <div className="bg-white p-6 rounded-lg shadow-lg"> <h2 className="text-lg font-semibold mb-4">Cambiar Foto de Perfil</h2> <input type="file" onChange={handleImageChange} /> <div className="mt-4 flex justify-end"> <button className="px-4 py-2 mr-2 bg-gray-300 rounded-md" onClick={closeModal} > Cancelar </button> <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out" onClick={handleSaveImage} > Guardar </button> </div> </div> </div> )} </div> ); };
 
 export default ProfileComponent;
