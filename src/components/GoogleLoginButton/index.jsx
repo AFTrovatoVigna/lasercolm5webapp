@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const GoogleLoginButton = () => {
   const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "/home" });
+    await signIn("google", { callbackUrl: "/" });
   };
 
   return (
