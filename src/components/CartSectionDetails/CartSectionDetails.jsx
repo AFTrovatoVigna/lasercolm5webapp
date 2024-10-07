@@ -37,7 +37,7 @@ const CartSectionDetails = ({ products }) => {
                 </div>
     
                 <Link href={'/products'} className="items-center text-center lg:ml-72 mt-10 space-x-2 text-pink-700 mb-10 text-[13px]  sm:text-lg font-bold">
-                  Psst psst, no te olvides nada? Agrega más productos haciendo click <b>aca</b>😉
+                  Psst psst, no te olvidas nada? Agrega más productos haciendo click <b>aca</b>😉
                 </Link>
     
                 <button

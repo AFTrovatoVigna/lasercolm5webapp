@@ -16,14 +16,14 @@ const Footer = () => {
   <div className="flex items-center space-x-4 mb-4 lg:mb-0">
     <Link href="https://www.instagram.com/lasercol_sas/">
       <img
-        className="w-[30px] h-[30px] lg:w-[35px] lg:h-[35px]"
+        className="w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]"
         src="/assets/instagram.png"
         alt="Instagram"
       />
     </Link>
     <Link href="https://wa.me/573164437212">
       <img
-        className="w-[30px] h-[30px] lg:w-[35px] lg:h-[35px]"
+        className="w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]"
         src="/assets/whatsapp.png"
         alt="WhatsApp"
       />
