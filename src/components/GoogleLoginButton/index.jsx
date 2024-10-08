@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const GoogleLoginButton = () => {
   const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "https://lasercol.vercel.app/" });
+    await signIn("google", { callbackUrl: "https://back-deploy-5y3a.onrender.com/auth/api/google/login" });
   };
 
   return (

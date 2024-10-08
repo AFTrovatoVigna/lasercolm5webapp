@@ -18,7 +18,9 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken;
+      localStorage.setItem("userSession", token)
       return session;
+
     },
     async redirect({ url, baseUrl }) {
       if (url.includes("/api/auth/callback/google")) {
