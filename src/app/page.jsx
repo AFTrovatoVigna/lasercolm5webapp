@@ -1,6 +1,40 @@
+"use client"
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
+import Cookies from 'js-cookie';
+import { useEffect } from "react";
+
+
+
+
+
 
 export default function Home() {
+  const userInfo = Cookies.get('userInfo');
+
+  useEffect(() => {
+    if (!localStorage.getItem("userSession")) {
+      if (userInfo) {
+        let sessionInfo = JSON.parse(userInfo)
+        console.log(userInfo);
+        
+        
+        localStorage.setItem("userSession", JSON.stringify({
+          name: sessionInfo.name,
+          email: sessionInfo.email,
+          token: sessionInfo.token,
+          id: sessionInfo.id, 
+        }));
+
+        Cookies.remove('userInfo');
+      } 
+
+    }else {
+      if (userInfo) {
+        Cookies.remove('userInfo');
+      }
+    }
+
+  }, [userInfo])
   return (
     <div className="bg-pink-100">
     
