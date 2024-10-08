@@ -24,7 +24,6 @@ const Login = () => {
     setDataUser({ ...dataUser, [name]: value })
   }
 
-  
   const handleSubmit = async (event) => {
     event.preventDefault(); // Make sure to call preventDefault before doing anything else
     try {
