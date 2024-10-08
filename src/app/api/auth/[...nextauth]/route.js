@@ -1,5 +1,6 @@
-import NextAuth from "next-auth/next";
+/*import NextAuth from "next-auth/next";
 import Google from "next-auth/providers/google";
+
 
 const handler = NextAuth({
   providers: [
@@ -8,17 +9,22 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  
   callbacks: {
-    /*async jwt({ token, account }) {
+    async jwt({ token, account, profile }) {
       if (account) {
         token.accessToken = account.access_token;
+        console.log("Profile ID:", profile.id); // Para depurar
+        token.id = profile.id; // Almacena el ID del usuario aquí
+        console.log("Profile ID:", profile.id); // Para depurar
       }
       return token;
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken;
+      session.user = { ...session.user, id: token.id }; // Pasa el ID aquí
       return session;
-    },*/
+    },
     async redirect({ url, baseUrl }) {
       if (url.includes("/api/auth/callback/google")) {
         return `${baseUrl}`;
@@ -29,15 +35,14 @@ const handler = NextAuth({
       return baseUrl;
     },
   },
-  /*session: {
+  session: {
     strategy: "jwt", // Sesión basada en JWT
-  },*/
+  },
 });
 
 export { handler as GET, handler as POST };
 
-
-
+*/
 
 
 
