@@ -78,13 +78,11 @@ export default GoogleLoginButton;
 
 
 "use client";
-import { signIn } from "next-auth/react";
+
 import Image from "next/image";
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
+
 
 const GoogleLoginButton = () => {
-  const {data: session} = useSession()
 
   const handleSignIn = async () => {
    // await signIn("google", { callbackUrl: "https://lasercol.vercel.app/" });
