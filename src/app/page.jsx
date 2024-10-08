@@ -1,47 +1,52 @@
 "use client"
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
-import Cookies from 'js-cookie';
 import { useEffect } from "react";
+// import { useRouter } from 'next/router';
 
 export default function Home() {
-  const userInfo = Cookies.get('userInfo');
+  // const router = useRouter();
+ 
+  
 
-  useEffect(() => {
-    if (!localStorage.getItem("userSession")) {
-      if (userInfo) {
-        let sessionInfo = JSON.parse(userInfo)
-        console.log(userInfo);
-        
-        
-        localStorage.setItem("userSession", JSON.stringify({
-          name: sessionInfo.name,
-          email: sessionInfo.email,
-          token: sessionInfo.token,
-          id: sessionInfo.id, 
-        }));
+ 
+  // const userInfo = Cookies.get('userInfo');
 
-        Cookies.remove('userInfo');
-      } 
+  // useEffect(() => {
+  //   if (!localStorage.getItem("userSession")) {
+  //     if (userInfo) {
+  //       let sessionInfo = JSON.parse(userInfo)
+  //       console.log(userInfo);
 
-    }else {
-      if (userInfo) {
-        Cookies.remove('userInfo');
-      }
-    }
 
-  }, [userInfo])
+  //       localStorage.setItem("userSession", JSON.stringify({
+  //         name: sessionInfo.name,
+  //         email: sessionInfo.email,
+  //         token: sessionInfo.token,
+  //         id: sessionInfo.id,
+  //       }));
+
+  //       Cookies.remove('userInfo');
+  //     }
+
+  //   }else {
+  //     if (userInfo) {
+  //       Cookies.remove('userInfo');
+  //     }
+  //   }
+
+  // }, [userInfo])
   return (
     <div className="bg-pink-100">
-    
+
       <div className="w-[100%] h-[200px] lg:h-[400px] mt-[50px] overflow-hidden">
- 
+
   <video
     src="/assets/videohomemobile1.mp4"
     autoPlay
     loop
     muted
     playsInline
-    className="w-full h-full object-cover  lg:hidden" 
+    className="object-cover w-full h-full lg:hidden"
   />
 
 
@@ -51,22 +56,22 @@ export default function Home() {
     loop
     muted
     playsInline
-    className="w-full h-full object-cover hidden lg:block" 
+    className="hidden object-cover w-full h-full lg:block"
   />
 </div>
 
 
-      <div className="py-10 lg:mt-10 text-center">
-        <h1 className="mb-4  text-xl lg:text-3xl font-semibold">
+      <div className="py-10 text-center lg:mt-10">
+        <h1 className="mb-4 text-xl font-semibold lg:text-3xl">
           Tienda online de accesorios personalizados
         </h1>
-        <p className="max-w-lg mx-auto text-base lg:text-lg text-gray-600">
+        <p className="max-w-lg mx-auto text-base text-gray-600 lg:text-lg">
           Descubre eso que siempre has soñado, diseñados con cariño y personalizados solo para ti.
           Haz que cada detalle cuente <span className="text-red-500">♥️</span>
         </p>
       </div>
 
-     
+
       <div className="flex items-center py-2 mx-5 lg:mt-14 lg:mb-[-90px]">
         <span className="text-gray-700 text-[18px] lg:text-[20px] whitespace-nowrap">
           Explora por categoría
@@ -80,18 +85,18 @@ export default function Home() {
 
       <ProductsCards />
 
-      <section className="lg:mt-24 mt-10">
+      <section className="mt-10 lg:mt-24">
 
-      <h2 className="text-center lg:text-4xl font-semibold mb-2 lg:mb-9">Nuestros trabajos</h2>
-      <p className="text-center lg:text-xl lg:mt-10  text-gray-600 mb-8">
+      <h2 className="mb-2 font-semibold text-center lg:text-4xl lg:mb-9">Nuestros trabajos</h2>
+      <p className="mb-8 text-center text-gray-600 lg:text-xl lg:mt-10">
         A continuación te presentamos una selección de los trabajos realizados en nuestro estudio.
       </p>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-2 lg:gap-1">
-  
+
         <div className="relative group">
           <img
-            src="/assets/p1.jpg" 
+            src="/assets/p1.jpg"
             alt="Volvo"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -103,7 +108,7 @@ export default function Home() {
 
         <div className="relative group">
           <img
-            src="/assets/p2.jpg" 
+            src="/assets/p2.jpg"
             alt="Andersen"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -112,10 +117,10 @@ export default function Home() {
           </div>
         </div>
 
-      
+
         <div className="relative group">
           <img
-            src="/assets/p3.jpg" 
+            src="/assets/p3.jpg"
             alt="Iberdrola"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -124,10 +129,10 @@ export default function Home() {
           </div>
         </div>
 
-      
+
         <div className="relative group">
           <img
-            src="/assets/p9.jpg" 
+            src="/assets/p9.jpg"
             alt="Reale Seguros"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -138,7 +143,7 @@ export default function Home() {
 
         <div className="relative group">
           <img
-            src="/assets/p10.jpg" 
+            src="/assets/p10.jpg"
             alt="Reale Seguros"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -149,7 +154,7 @@ export default function Home() {
 
         <div className="relative group">
           <img
-            src="/assets/p6.jpg" 
+            src="/assets/p6.jpg"
             alt="Reale Seguros"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -171,7 +176,7 @@ export default function Home() {
 
         <div className="relative group">
           <img
-            src="/assets/p11.jpg" 
+            src="/assets/p11.jpg"
             alt="Reale Seguros"
             className="w-[70%] h-auto mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg relative"
           />
@@ -181,16 +186,16 @@ export default function Home() {
         </div>
       </div>
     </section>
-      
 
-    <div className=" p-6 lg:mt-14">
 
-      <h1 className="text-center lg:text-3xl font-bold mb-5 lg:mb-16">
+    <div className="p-6 lg:mt-14">
+
+      <h1 className="mb-5 font-bold text-center lg:text-3xl lg:mb-16">
         Razones para elegirnos
       </h1>
 
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12 rounded-lg">
+      <div className="grid items-center grid-cols-1 gap-8 mb-12 rounded-lg lg:grid-cols-2">
 
         <div>
         <video
@@ -199,22 +204,22 @@ export default function Home() {
     loop
     muted
     playsInline
-    className="lg:w-[550px] lg:h-[250px] object-cover lg:ml-12 rounded-xl  " 
+    className="lg:w-[550px] lg:h-[250px] object-cover lg:ml-12 rounded-xl  "
   />
         </div>
 
-        
+
         <div className="text-center lg:text-left">
           <h2 className="text-xl font-semibold">Trabajo profesional</h2>
           <p className="mt-2">
-          Contamos con experiencia y equipamiento especializado para cubrir las necesidades de cada cliente, ya sea para personas o pequeños negocios. Realizamos todo tipo de trabajos personalizados en materiales como metales, plásticos, acrílicos y maderas, con un enfoque en precisión y calidad. 
+          Contamos con experiencia y equipamiento especializado para cubrir las necesidades de cada cliente, ya sea para personas o pequeños negocios. Realizamos todo tipo de trabajos personalizados en materiales como metales, plásticos, acrílicos y maderas, con un enfoque en precisión y calidad.
           </p>
         </div>
       </div>
 
-     
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-    
+
+      <div className="grid items-center grid-cols-1 gap-8 lg:grid-cols-2">
+
         <div className="text-center lg:ml-10 lg:text-left">
           <h2 className="text-xl font-semibold">Calidad</h2>
           <p className="mt-2">
@@ -222,7 +227,7 @@ export default function Home() {
           </p>
         </div>
 
-       
+
         <div>
         <video
     src="/assets/video2.mp4"
@@ -230,7 +235,7 @@ export default function Home() {
     loop
     muted
     playsInline
-    className="lg:w-[550px] lg:h-[250px] object-cover lg:ml-12 rounded-xl   " 
+    className="lg:w-[550px] lg:h-[250px] object-cover lg:ml-12 rounded-xl   "
   />
         </div>
       </div>
@@ -247,14 +252,14 @@ export default function Home() {
         </div>
       </div>
 
-    
+
       <section className="py-8 bg-gray-50">
         <div className="px-4 mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        
+
             <div className="p-6 bg-white rounded-lg shadow-md">
               <div className="flex items-center mb-4">
-           
+
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
@@ -274,7 +279,7 @@ export default function Home() {
 
             </div>
 
-           
+
             <div className="p-6 bg-white rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -295,7 +300,7 @@ export default function Home() {
               <p className="mt-4 text-gray-500">— María López</p>
             </div>
 
- 
+
             <div className="p-6 bg-white rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -316,7 +321,7 @@ export default function Home() {
               <p className="mt-4 text-gray-500">— Pedro Gómez</p>
             </div>
 
-       
+
             <div className="p-6 bg-white rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
