@@ -47,6 +47,7 @@ const RegisterForm = () => {
     try {
       const newuser = await register(dataUser);
       Swal.fire("Te registraste correctamente");
+      console.log ("res",newuser);
       const newCart = await CreateCart(newuser.id);
       console.log ("The new cart",newCart);
       console.log ("The new user id", newuser.id);
