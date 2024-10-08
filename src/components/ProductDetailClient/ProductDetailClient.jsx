@@ -56,7 +56,7 @@ const ProductDetailClient = ({ product }) => {
                         </p>
                         <p>En Lasercol, creemos que los recuerdos y las conexiones profundas merecen ser eternos. Nuestros productos, fabricados en acero inoxidable pulido, son grabados con láser y personalizables con tu mensaje. Crea una pieza única que celebre tus historias más queridas</p>
                     </div>
-                    <h3 className="mb-6 text-2xl font-bold text-gray-800">Precio: {product.valor}</h3>
+                    <h3 className="mb-6 text-2xl font-bold text-gray-800">Precio: ${product.valor}</h3>
 
                 
                     <div className="mb-4">

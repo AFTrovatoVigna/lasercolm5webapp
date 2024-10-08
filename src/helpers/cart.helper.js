@@ -85,7 +85,7 @@ export async function QuickAddtoCart(cartId, productId) {
 
 export async function DeleteProductFromCart(cartId, productId, router) {
   // Prompt the user for confirmation
-  const isConfirmed = await Swal.fire({
+  const { isConfirmed } = await Swal.fire({
     title: '¿Estás seguro de que deseas eliminar este producto del carrito?',
     text: "¡No podrás revertir esto!",
     icon: 'warning',
@@ -102,14 +102,13 @@ export async function DeleteProductFromCart(cartId, productId, router) {
 
   try {
     const res = await fetch(`${API_URL}/cart/${cartId}/product/${productId}`, {
-      method: 'DELETE', 
+      method: 'DELETE',
       headers: {
         "Content-type": "application/json"
       }
     });
 
     if (res.ok) {
-      
       router.push("/cart"); 
     } else {
       throw new Error("Failed to delete product from cart");
@@ -118,3 +117,4 @@ export async function DeleteProductFromCart(cartId, productId, router) {
     throw new Error(`Failed to delete product from cart: ${error.message}`);
   }
 }
+

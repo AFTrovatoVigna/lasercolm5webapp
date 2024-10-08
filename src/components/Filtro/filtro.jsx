@@ -95,78 +95,87 @@ const FiltroProductos = ({ productos }) => {
 };
 
     return (
-        <div className="flex">
-
-            <aside className="sticky top-0 w-1/4 h-screen p-4 bg-white">
-                <h2 className="mb-4 text-xl font-semibold">Filtrar productos</h2>
-
-                <TextField
-                    select
-                    label="Categoría"
-                    value={category}
-                    onChange={(e) => setcategory(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                >
-                    <MenuItem value="">Todas</MenuItem>
-                    {categorys.map((cat, index) => (
-                        <MenuItem key={index} value={cat}>{cat}</MenuItem>
-                    ))}
-                </TextField>
-
-                <TextField
-                    select
-                    label="Color"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                >
-                    <MenuItem value="">Todos</MenuItem>
-                    {colores.map((col, index) => (
-                        <MenuItem key={index} value={col}>{col}</MenuItem>
-                    ))}
-                </TextField>
-
-                <Typography gutterBottom>Rango de Precio</Typography>
-                <Slider
-                    value={precio}
-                    onChange={(e, newValue) => setPrecio(newValue)}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={100000}
-                />
-                <Typography>Precio: ${precio[0]} - ${precio[1]}</Typography>
-
-                <Button
-  variant="contained"
-  onClick={filtrarProductos}
-  style={{ marginTop: '20px', backgroundColor: '#e91e63', color: 'white' }}
->
-  Aplicar Filtros
-</Button>
-<Button
-  variant="outlined"
-  onClick={borrarFiltros}
-  style={{
-    marginTop: '10px',
-    marginLeft: '10px',
-    color: '#e91e63',
-    borderColor: '#e91e63',
-  }}
->
-  Borrar Filtros
-</Button>
+        <div className="flex flex-col lg:flex-row lg:mt-9">
 
 
-            </aside>
+  <aside className="lg:sticky top-0 w-full lg:w-[300px] h-auto lg:h-screen p-4 bg-white">
+    <h2 className="mb-4 text-xl font-semibold">Filtrar productos</h2>
 
+    <TextField
+      select
+      label="Categoría"
+      value={category}
+      onChange={(e) => setcategory(e.target.value)}
+      fullWidth
+      margin="normal"
+    >
+      <MenuItem value="">Todas</MenuItem>
+      {categorys.map((cat, index) => (
+        <MenuItem key={index} value={cat}>{cat}</MenuItem>
+      ))}
+    </TextField>
 
-            <section className="w-3/4 p-4"> 
-                <ProductGridComponent products={productosFiltrados.length > 0 ? productosFiltrados : productos} />
-            </section>
-        </div>
+    <TextField
+      select
+      label="Color"
+      value={color}
+      onChange={(e) => setColor(e.target.value)}
+      fullWidth
+      margin="normal"
+    >
+      <MenuItem value="">Todos</MenuItem>
+      {colores.map((col, index) => (
+        <MenuItem key={index} value={col}>{col}</MenuItem>
+      ))}
+    </TextField>
+
+    <Typography gutterBottom>Rango de Precio</Typography>
+
+ 
+    <Slider
+      value={precio}
+      onChange={(e, newValue) => setPrecio(newValue)}
+      valueLabelDisplay="auto"
+      min={0}
+      max={100000}
+      sx={{
+        color: '#e91e63', 
+        '& .MuiSlider-thumb': { backgroundColor: '#e91e63' },
+        '& .MuiSlider-rail': { backgroundColor: '#f48fb1' }
+      }}
+    />
+    <Typography>Precio: ${precio[0]} - ${precio[1]}</Typography>
+
+    <div className="flex justify-around mt-4">
+      <Button
+        variant="contained"
+        onClick={filtrarProductos}
+        className=""
+        style={{ backgroundColor: '#e91e63', color: 'white', marginRight: '10px' }}  
+      >
+        Aplicar Filtros
+      </Button>
+
+      <Button
+        variant="outlined"
+        onClick={borrarFiltros}
+        className=""
+        style={{ color: '#e91e63', borderColor: '#e91e63', marginLeft: '10px' }} 
+      >
+        Borrar Filtros
+      </Button>
+    </div>
+  </aside>
+
+  
+  <section className="w-full lg:w-3/4 p-4">
+    <ProductGridComponent products={productosFiltrados.length > 0 ? productosFiltrados : productos} />
+  </section>
+
+</div>
+
     );
 };
 
 export default FiltroProductos;
+//hodklddjf
