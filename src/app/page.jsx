@@ -3,11 +3,6 @@ import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import Cookies from 'js-cookie';
 import { useEffect } from "react";
 
-
-
-
-
-
 export default function Home() {
   const userInfo = Cookies.get('userInfo');
 
