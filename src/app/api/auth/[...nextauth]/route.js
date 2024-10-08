@@ -8,8 +8,9 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  
   callbacks: {
-    /*async jwt({ token, account }) {
+    async jwt({ token, account }) {
       if (account) {
         token.accessToken = account.access_token;
       }
@@ -18,7 +19,7 @@ const handler = NextAuth({
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       return session;
-    },*/
+    },
     async redirect({ url, baseUrl }) {
       if (url.includes("/api/auth/callback/google")) {
         return `${baseUrl}`;
@@ -29,13 +30,12 @@ const handler = NextAuth({
       return baseUrl;
     },
   },
-  /*session: {
+  session: {
     strategy: "jwt", // Sesión basada en JWT
-  },*/
+  },
 });
 
 export { handler as GET, handler as POST };
-
 
 
 
