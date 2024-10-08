@@ -12,6 +12,7 @@ const GoogleLoginButton = () => {
   };
 
 useEffect(() => {
+  console.log("Session:", session); // Para depurar
   if(session) {
     localStorage.setItem("userSession", JSON.stringify({
       name: session.user.name,
