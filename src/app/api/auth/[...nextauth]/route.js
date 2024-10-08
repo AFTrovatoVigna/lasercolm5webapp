@@ -1,6 +1,7 @@
 import NextAuth from "next-auth/next";
 import Google from "next-auth/providers/google";
 
+
 const handler = NextAuth({
   providers: [
     Google({
@@ -10,24 +11,23 @@ const handler = NextAuth({
   ],
   
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account, profile }) {
       if (account) {
         token.accessToken = account.access_token;
+        token.id = profile.id; // Almacena el ID del usuario aquí
       }
       return token;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       session.accessToken = token.accessToken;
-      session.user = { ...session.user, id: token.sub };
+      session.user = { ...session.user, id: token.id }; // Pasa el ID aquí
       return session;
-
     },
     async redirect({ url, baseUrl }) {
       if (url.includes("/api/auth/callback/google")) {
         return `${baseUrl}`;
       }
       if (url === "/api/auth/signout") {
-
         return baseUrl;
       }
       return baseUrl;
