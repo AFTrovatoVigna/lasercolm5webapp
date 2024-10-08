@@ -9,19 +9,14 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      return token;
-    },
+   
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       return session;
     },
     async redirect({ url, baseUrl }) {
       if (url.includes("/api/auth/callback/google")) {
-        return `${baseUrl}/home`;
+        return `${baseUrl}`;
       }
       if (url === "/api/auth/signout") {
         return baseUrl;
@@ -29,9 +24,7 @@ const handler = NextAuth({
       return baseUrl;
     },
   },
-  session: {
-    strategy: "jwt", // Sesión basada en JWT
-  },
+  
 });
 
 export { handler as GET, handler as POST };
