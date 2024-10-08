@@ -17,6 +17,7 @@ useEffect(() => {
       name: session.user.name,
       email: session.user.email,
       token: session.accessToken,
+      id: session.user.id, 
     }));
   }else {
     localStorage.removeItem("userSession");
