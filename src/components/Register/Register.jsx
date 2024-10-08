@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { register } from '@/helpers/auth.helper';
 import { CreateCart } from '@/helpers/cart.helper';
 import Swal from 'sweetalert2';
-import { signIn, useSession, signOut } from 'next-auth/react';
+
 import GoogleCustomerRegisterButton from '../GoogleRegisterButton';
 
 const RegisterForm = () => {
