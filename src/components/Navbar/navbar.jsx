@@ -61,7 +61,7 @@ function Navbar() {
             <Link href="/" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
             <Link href="/products" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
             <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
-            <Link href="/designs" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+            <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
           </div>
 
  
