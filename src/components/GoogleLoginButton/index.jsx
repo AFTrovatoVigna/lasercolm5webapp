@@ -91,7 +91,7 @@ const GoogleLoginButton = () => {
    window.location.href = "https://back-deploy-5y3a.onrender.com/auth/api/callback/google/login"
   };
 
-useEffect(() => {
+/*useEffect(() => {
   console.log("Session:", session); // Para depurar
   if(session) {
     localStorage.setItem("userSession", JSON.stringify({
@@ -103,7 +103,7 @@ useEffect(() => {
   }else {
     localStorage.removeItem("userSession");
   }
-  }, [session]);
+  }, [session]);*/
 
 
 
