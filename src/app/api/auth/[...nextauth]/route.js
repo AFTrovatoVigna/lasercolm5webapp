@@ -14,7 +14,9 @@ const handler = NextAuth({
     async jwt({ token, account, profile }) {
       if (account) {
         token.accessToken = account.access_token;
+        console.log("Profile ID:", profile.id); // Para depurar
         token.id = profile.id; // Almacena el ID del usuario aquí
+        console.log("Profile ID:", profile.id); // Para depurar
       }
       return token;
     },
