@@ -87,7 +87,8 @@ const GoogleLoginButton = () => {
   const {data: session} = useSession()
 
   const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "https://lasercol.vercel.app/" });
+   // await signIn("google", { callbackUrl: "https://lasercol.vercel.app/" });
+   window.location.href = "https://back-deploy-5y3a.onrender.com/auth/api/callback/google/login"
   };
 
 useEffect(() => {
