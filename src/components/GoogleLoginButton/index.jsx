@@ -8,12 +8,16 @@ const GoogleLoginButton = () => {
   const {data: session} = useSession()
 
   const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "https://back-deploy-5y3a.onrender.com/auth/api/google/login" });
+    await signIn("google", { callbackUrl: "https://lasercol.vercel.app/" });
   };
 
 useEffect(() => {
   if(session) {
-    localStorage.setItem("userSession", JSON.stringify(session.accessToken));
+    localStorage.setItem("userSession", JSON.stringify({
+      name: session.user.name,
+      email: session.user.email,
+      token: session.accessToken,
+    }));
   }else {
     localStorage.removeItem("userSession");
   }
