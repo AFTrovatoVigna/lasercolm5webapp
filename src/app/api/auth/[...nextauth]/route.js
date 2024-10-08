@@ -18,7 +18,6 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken;
-      localStorage.setItem("userSession", token)
       return session;
 
     },
@@ -27,6 +26,7 @@ const handler = NextAuth({
         return `${baseUrl}`;
       }
       if (url === "/api/auth/signout") {
+
         return baseUrl;
       }
       return baseUrl;

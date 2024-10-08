@@ -1,11 +1,25 @@
 "use client";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 const GoogleLoginButton = () => {
+  const {data: session} = useSession()
+
   const handleSignIn = async () => {
     await signIn("google", { callbackUrl: "https://back-deploy-5y3a.onrender.com/auth/api/google/login" });
   };
+
+useEffect(() => {
+  if(session) {
+    localStorage.setItem("userSession", JSON.stringify(session.accessToken));
+  }else {
+    localStorage.removeItem("userSession");
+  }
+  }, [session]);
+
+
 
   return (
     <div className="flex justify-center items-center border border-pink-700 rounded-md lg:w-[400px] hover:bg-pink-600 p-2 mt-5 mb-5">
