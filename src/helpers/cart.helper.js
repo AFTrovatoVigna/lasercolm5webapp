@@ -54,15 +54,28 @@ export async function AddtoCart(cartId, productId, router) {
 }
 export async function QuickAddtoCart(productId) {
   try {
+    const cartId = localStorage.getItem('cartId');
+    if (!cartId) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Inicia sesion para poder añadir el producto'
+      });
+      return;
+    }
     const res = await fetch(`${API_URL}/cart/${cartId}/${productId}`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
       }
     });
-
+    
     if (res.ok) {
-      router.push("/products"); // Usar el router pasado como argumento
+      Swal.fire({
+        icon: 'success',
+        title: 'Agregado',
+        text: 'Producto agregado al carrito exitosamente.'
+      });
     }
     
   } catch (error) {

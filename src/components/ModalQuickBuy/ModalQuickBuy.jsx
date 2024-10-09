@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { QuickAddtoCart } from '@/helpers/cart.helper';
 
-const ModalQuickBuy = ({ show, onClose, product, cartId }) => {
+const ModalQuickBuy = ({ show, onClose, product}) => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
