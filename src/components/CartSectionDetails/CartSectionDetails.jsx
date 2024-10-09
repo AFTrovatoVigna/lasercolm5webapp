@@ -8,8 +8,16 @@ const CartSectionDetails = ({ products }) => {
 
   // Function to calculate the total price of products
   const calculateTotalPrice = () => {
-    if (!Array.isArray(products)) return 0; // Ensure products is an array
-    return products.reduce((total, product) => total + (product.valor || 0), 0); // Ensure valor exists
+    let total = 0; // Initialize total to 0
+  
+    // Iterate over each product and add the value to total
+    products.forEach(product => {
+      if (product.valor) {
+        total += product.valor; // Add product.valor to total if it exists
+      }
+    });
+  
+    return total; // Return the total price
   };
 
   useEffect(() => {
