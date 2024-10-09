@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+
 function ProductCard({ product, onQuickBuy }) { 
     return (
         <div className="flex flex-col items-center text-center p-4 bg-white shadow-lg rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 ease-in-out max-w-xs mx-auto">
