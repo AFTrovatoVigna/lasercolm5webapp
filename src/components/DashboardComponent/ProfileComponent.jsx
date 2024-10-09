@@ -79,7 +79,7 @@ const ProfileComponent = () => {
     formData.append("file", selectedImage);  
   
     try {
-      const response = await fetch(`http://localhost:3000/file/uploadImageUser/${userSession.id}`, {
+      const response = await fetch(`https://back-deploy-5y3a.onrender.com/file/uploadImageUser/${userSession.id}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${userSession.token}`,
