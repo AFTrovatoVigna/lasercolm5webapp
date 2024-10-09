@@ -61,7 +61,7 @@ function Navbar() {
             <Link href="/" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
             <Link href="/products" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
             <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
-            <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+            <Link href="/disenos" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Materiales</Link>
           </div>
 
  
@@ -106,10 +106,10 @@ function Navbar() {
        
         {isOpen && (
           <div className="lg:hidden mt-4 bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100 rounded-lg shadow-lg p-4">
-            <Link href="/" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
-            <Link href="/products" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
-            <Link href="/about" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
-            <Link href="/designs" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+            <Link href="/" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
+            <Link href="/products" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
+            <Link href="/disenos" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
 
             {isLoggedIn ? (
               <>

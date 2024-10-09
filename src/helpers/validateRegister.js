@@ -24,43 +24,43 @@ export const validateRegister = (form) => {
 
 
   if (form.name && !regExp.name.test(form.name)) {
-    errors.name = "❌Ingresa un nombre válido";
+    errors.name = "El nombre debe contener solo letras y no puede tener espacios al inicio o al final. Ejemplo: 'Lionel Messi'.";
   }
 
   if (form.email && !regExp.email.test(form.email)) {
-    errors.email = "❌Ingresa un email válido";
+    errors.email = "El email debe tener un formato válido. Ejemplo:'nombre@dominio.com'";
   }
 
   if (form.password && !regExp.password.test(form.password)) {
-    errors.password = "❌Ingresa una contraseña válida";
+    errors.password = "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial como @$!%*?&";
   }
 
   if (form.passwordConfirmation && !regExp.passwordConfirmation.test(form.passwordConfirmation)) {
-    errors.passwordConfirmation = "❌Ingresa una contraseña válida";
+    errors.passwordConfirmation = "La confirmación de la contraseña debe coincidir y cumplir con los mismos requisitos";
   }
 
   if (form.Dni && !regExp.Dni.test(form.Dni)) {
-    errors.Dni = "❌Ingresa una dirección válida";
+    errors.Dni = "El DNI debe ser un número entre 7 y 11 caracteres, por ejemplo,'123.456.789'";
   }
 
   if (form.address && !regExp.address.test(form.address)) {
-    errors.address = "❌Ingresa una dirección válida";
+    errors.address = "La dirección debe contener al menos 3 caracteres y puede incluir letras, números, comas, puntos y guiones.";
   }
 
   if (form.phone && !regExp.phone.test(form.phone.toString())) {
-    errors.phone = "❌Ingresa un número de teléfono válido";
+    errors.phone = "El teléfono debe contener entre 10 y 15 dígitos, sin espacios ni símbolos.";
   }
 
   if (form.country && !regExp.country.test(form.country)) {
-    errors.country = "❌Ingresa un paìs válido";
+    errors.country = "El país debe contener entre 2 y 50 caracteres, permitiendo solo letras y espacios.";
   }
 
   if (form.city && !regExp.city.test(form.city)) {
-    errors.city = "❌Ingresa una ciudad válida";
+    errors.city = "La ciudad debe contener entre 2 y 50 caracteres, permitiendo solo letras y espacios.";
   }
 
   if (form.birthDate && !regExp.birthDate.test(form.birthDate)) {
-    errors.birthDate = "❌Ingresa una fecha válida (YYYY-MM-DD)";
+    errors.birthDate = "La fecha de nacimiento debe estar en el formato 'YYYY-MM-DD'. Ejemplo: '1997-04-17'.";
   }
 
   return errors;

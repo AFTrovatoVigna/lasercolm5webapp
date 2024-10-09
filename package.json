@@ -13,6 +13,7 @@
     "@auth0/nextjs-auth0": "^3.5.0",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@heroicons/react": "^2.1.5",
     "@mui/material": "^6.1.1",
     "@mui/styled-engine-sc": "^6.1.1",
     "@mui/x-data-grid": "^7.18.0",

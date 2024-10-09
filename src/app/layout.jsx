@@ -3,6 +3,8 @@ import "./globals.css";
 import React from "react";
 import Footer from "@/components/footer/Footer";
 
+
+
 import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata = {
@@ -18,6 +20,7 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <Navbar />
             <main className="flex-grow">{children}</main>
+         
             <Footer />
           </AuthProvider>
      

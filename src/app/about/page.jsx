@@ -1,7 +1,10 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import MapGoogle from '@/components/MapGoogle/MapGoogle'
+import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton'
+
 
 const About = () => {
   return (
@@ -80,7 +83,7 @@ const About = () => {
 
 <div/>
 </div>
-
+<WhatsAppButton/>
       </div>
  
   )
