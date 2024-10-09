@@ -6,17 +6,17 @@ import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 
 export default function Disenos() {
   return (
-    <div className="bg-gray-50 py-16 lg:mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Nuestros Servicios de Grabado Láser</h2>
-        <p className="mt-4 text-lg text-gray-600 text-center">
+    <div className="py-16 bg-gray-50 lg:mt-20">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <h2 className="mb-10 text-3xl font-bold text-center text-gray-900">Nuestros Servicios de Grabado Láser</h2>
+        <p className="mt-4 text-lg text-center text-gray-600">
           Ofrecemos una amplia variedad de servicios de grabado láser para diferentes materiales.</p>
-          <p className=" text-lg text-gray-600 text-center">Descubre las opciones que mejor se adapten a tus necesidades.</p>
+          <p className="text-lg text-center text-gray-600 ">Descubre las opciones que mejor se adapten a tus necesidades.</p>
  
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 mt-10 sm:grid-cols-2 lg:grid-cols-3">
      
-          <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-pink-600 text-white">
+          <div className="flex flex-col items-center p-6 text-center bg-white rounded-lg shadow-lg">
+            <div className="flex items-center justify-center w-16 h-16 text-white bg-pink-600 rounded-full">
              <img src="/assets/corte.png" className='lg:w-[40px] lg:h-[40px]' alt="" />
             </div>
             <h3 className="mt-6 text-xl font-bold text-gray-900">Corte Láser</h3>
@@ -26,8 +26,8 @@ export default function Disenos() {
           </div>
 
     
-          <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-pink-600 text-white">
+          <div className="flex flex-col items-center p-6 text-center bg-white rounded-lg shadow-lg">
+            <div className="flex items-center justify-center w-16 h-16 text-white bg-pink-600 rounded-full">
             <img src="/assets/grabado.png" className='lg:w-[40px] lg:h-[40px]' alt="" />
             </div>
             <h3 className="mt-6 text-xl font-bold text-gray-900">Grabado Láser</h3>
@@ -37,8 +37,8 @@ export default function Disenos() {
           </div>
 
      
-          <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
-            <div className="flex items-center justify-center h-16 w-16 rounded-full bg-pink-600 text-white">
+          <div className="flex flex-col items-center p-6 text-center bg-white rounded-lg shadow-lg">
+            <div className="flex items-center justify-center w-16 h-16 text-white bg-pink-600 rounded-full">
             <img src="/assets/marcado.png" className='lg:w-[40px] lg:h-[40px]' alt="" />
             </div>
             <h3 className="mt-6 text-xl font-bold text-gray-900">Marcado Láser</h3>
@@ -53,14 +53,14 @@ export default function Disenos() {
 
     
         <div className="mt-16 lg:mt-20 lg:mb-20">
-  <h2 className="text-2xl font-bold text-gray-900 text-center ">Materiales Compatibles</h2>
-  <p className="mt-4 text-lg text-gray-600 text-center">
+  <h2 className="text-2xl font-bold text-center text-gray-900 ">Materiales Compatibles</h2>
+  <p className="mt-4 text-lg text-center text-gray-600">
     Trabajamos con una amplia variedad de materiales para cumplir con los requisitos específicos de nuestros clientes.
   </p>
 
-  <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+  <div className="grid grid-cols-1 gap-8 mt-10 sm:grid-cols-2 lg:grid-cols-5">
     <div
-      className="bg-white p-6 rounded-lg shadow-lg text-center"
+      className="p-6 text-center bg-white rounded-lg shadow-lg"
       style={{
         backgroundImage: "url('assets/madera2.png')", 
         backgroundSize: 'cover',
@@ -73,7 +73,7 @@ export default function Disenos() {
     </div>
     
     <div
-      className="bg-white p-6 rounded-lg shadow-lg text-center"
+      className="p-6 text-center bg-white rounded-lg shadow-lg"
       style={{
         backgroundImage: "url('/assets/acrilicoo.png')", 
         backgroundSize: 'cover',
@@ -86,7 +86,7 @@ export default function Disenos() {
     </div>
     
     <div
-      className="bg-white p-6 rounded-lg shadow-lg text-center"
+      className="p-6 text-center bg-white rounded-lg shadow-lg"
       style={{
         backgroundImage: "url('/assets/metall.png')",
         backgroundSize: 'cover',
@@ -99,7 +99,7 @@ export default function Disenos() {
     </div>
     
     <div
-      className="bg-white p-6 rounded-lg shadow-lg text-center"
+      className="p-6 text-center bg-white rounded-lg shadow-lg"
       style={{
         backgroundImage: "url('/assets/cueroo.png')", 
         backgroundSize: 'cover',
@@ -112,7 +112,7 @@ export default function Disenos() {
     </div>
     
     <div
-      className="bg-white p-6 rounded-lg shadow-lg text-center"
+      className="p-6 text-center bg-white rounded-lg shadow-lg"
       style={{
         backgroundImage: "url('/assets/aceroo.png')", 
         backgroundSize: 'cover',
@@ -132,10 +132,10 @@ export default function Disenos() {
 
 
      
-        <div className="bg-gray-50 py-16 ">
-      <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+        <div className="py-16 bg-gray-50 ">
+      <div className="flex flex-col px-4 max-w-7xl sm:px-6 lg:px-8 lg:flex-row">
         {/* Imagen */}
-        <div className="flex justify-center lg:w-1/2 mb-6 lg:mb-0">
+        <div className="flex justify-center mb-6 lg:w-1/2 lg:mb-0">
           <img
             src=" /assets/madera1.jpeg" 
             alt="Madera"
@@ -151,7 +151,7 @@ export default function Disenos() {
           </p>
 
       
-          <div className="mt-8 flex justify-start">
+          <div className="flex justify-start mt-8">
             <div className="flex flex-col items-center">
               <img src=" /assets/corte.png" alt="Corte" className="lg:h-[80px] lg:w-[100px]" />
               <span className="mt-2 text-sm font-medium text-gray-700">Corte</span>
@@ -169,10 +169,10 @@ export default function Disenos() {
       </div>
     </div>
 
-    <div className="bg-gray-50 py-16 ">
-      <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+    <div className="py-16 bg-gray-50 ">
+      <div className="flex flex-col px-4 max-w-7xl sm:px-6 lg:px-8 lg:flex-row">
  
-        <div className="flex justify-center lg:w-1/2 mb-6 lg:mb-0">
+        <div className="flex justify-center mb-6 lg:w-1/2 lg:mb-0">
           <img
             src=" /assets/acrilico1.jpeg" 
             alt="Acrilico"
@@ -188,7 +188,7 @@ export default function Disenos() {
           </p>
 
     
-          <div className="mt-8 flex justify-start">
+          <div className="flex justify-start mt-8">
             <div className="flex flex-col items-center">
               <img src=" /assets/corte.png" alt="Corte" className="lg:h-[80px] lg:w-[100px]" />
               <span className="mt-2 text-sm font-medium text-gray-700">Corte</span>
@@ -209,10 +209,10 @@ export default function Disenos() {
 
 
 
-    <div className="bg-gray-50 py-16 ">
-      <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+    <div className="py-16 bg-gray-50 ">
+      <div className="flex flex-col px-4 max-w-7xl sm:px-6 lg:px-8 lg:flex-row">
     
-        <div className="flex justify-center lg:w-1/2 mb-6 lg:mb-0">
+        <div className="flex justify-center mb-6 lg:w-1/2 lg:mb-0">
           <img
             src=" /assets/metal1.jpeg"
             alt="Metal"
@@ -228,11 +228,8 @@ export default function Disenos() {
           </p>
 
         
-          <div className="mt-8 flex justify-start">
-            <div className="flex flex-col items-center">
-              <img src=" /assets/corte.png" alt="Corte" className="lg:h-[80px] lg:w-[100px]" />
-              <span className="mt-2 text-sm font-medium text-gray-700">Corte</span>
-            </div>
+          <div className="flex justify-start mt-8">
+            
             <div className="flex flex-col items-center">
               <img src=" /assets/grabado.png" alt="Grabado" className="lg:h-[80px] lg:w-[100px]" />
               <span className="mt-2 text-sm font-medium text-gray-700">Grabado</span>
@@ -249,10 +246,10 @@ export default function Disenos() {
 
 
 
-    <div className="bg-gray-50 py-16 ">
-      <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+    <div className="py-16 bg-gray-50 ">
+      <div className="flex flex-col px-4 max-w-7xl sm:px-6 lg:px-8 lg:flex-row">
       
-        <div className="flex justify-center lg:w-1/2 mb-6 lg:mb-0">
+        <div className="flex justify-center mb-6 lg:w-1/2 lg:mb-0">
           <img
             src=" /assets/cuero1.jpg" 
             alt="Cuero"
@@ -268,7 +265,7 @@ export default function Disenos() {
           </p>
 
     
-          <div className="mt-8 flex justify-start">
+          <div className="flex justify-start mt-8">
             <div className="flex flex-col items-center">
               <img src=" /assets/corte.png" alt="Corte" className="lg:h-[80px] lg:w-[100px]" />
               <span className="mt-2 text-sm font-medium text-gray-700">Corte</span>
@@ -289,10 +286,10 @@ export default function Disenos() {
 
 
 
-    <div className="bg-gray-50 py-5 ">
-      <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row">
+    <div className="py-5 bg-gray-50 ">
+      <div className="flex flex-col px-4 max-w-7xl sm:px-6 lg:px-8 lg:flex-row">
         {/* Imagen */}
-        <div className="flex justify-center lg:w-1/2 mb-6 lg:mb-0">
+        <div className="flex justify-center mb-6 lg:w-1/2 lg:mb-0">
           <img
             src=" /assets/acero1.jpg" 
             alt="Acero"
@@ -308,7 +305,7 @@ export default function Disenos() {
           </p>
 
       
-          <div className="mt-8 flex justify-start">
+          <div className="flex justify-start mt-8">
             <div className="flex flex-col items-center">
               <img src=" /assets/corte.png" alt="Corte" className="lg:h-[80px] lg:w-[100px]" />
               <span className="mt-2 text-sm font-medium text-gray-700">Corte</span>

@@ -5,7 +5,7 @@ import ProductCard from "@/components/Card";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import FiltroProductos from "@/components/Filtro/filtro";
 
-function Collar() { // Changed to uppercase
+function Collar() { 
     const APIURL = process.env.NEXT_PUBLIC_API_URL
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,4 +41,4 @@ function Collar() { // Changed to uppercase
     );
 }
 
-export default Collar; // Changed to uppercase
+export default Collar; 

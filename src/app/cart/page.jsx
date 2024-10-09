@@ -83,7 +83,7 @@ const Cart = () => {
                   product={product} 
                   cartId={cartId} 
                   router={router} 
-                  onDelete={handleDeleteProduct} // Pass handleDeleteProduct as prop
+                  onDelete={handleDeleteProduct} 
                 />
               </li>
             ))}
