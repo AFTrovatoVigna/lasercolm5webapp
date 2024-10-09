@@ -13,7 +13,7 @@ const CartSectionDetails = ({ products }) => {
     // Iterate over each product and add the value to total
     products.forEach(product => {
       if (product.valor) {
-        total += product.valor; // Add product.valor to total if it exists
+        total += Number(product.valor); // Add product.valor to total if it exists
       }
     });
 
