@@ -9,10 +9,10 @@ const CartSectionDetails = ({ products }) => {
   // Function to calculate the total price of products
   const calculateTotalPrice = () => {
     if (!Array.isArray(products)) return 0; // Ensure products is an array
-    let total = 0; // Initialize total to 0
-    // Iterate over each product and add the value to total
+    let total = 0; 
     products.forEach(product => {
       if (product.valor) {
+        console.log (Number(product.valor));
         total += Number(product.valor); // Add product.valor to total if it exists
       }
     });
