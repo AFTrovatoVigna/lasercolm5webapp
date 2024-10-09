@@ -5,10 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
-
 function Navbar() {
   const router = useRouter();
- const searchParams = useSearchParams();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,8 +14,13 @@ function Navbar() {
 
   
   useEffect(() => {
+    let token
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      token =params.get('token');
+    }
     const userSession = localStorage.getItem('userSession');
-  const token = searchParams.get('token');
+  // const token = searchParams.get('token');
   
     if (userSession) {
       try {
@@ -70,6 +73,9 @@ function Navbar() {
   };
 
   return (
+   
+      
+
     <div>
       <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 shadow-md bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
         <div className="flex items-center justify-between">
