@@ -74,7 +74,7 @@ const CartSectionDetails = ({ products }) => {
           <div className="bg-pink-200 p-4 md:p-6 rounded-lg shadow-lg lg:h-[270px] mb-10 w-full sm:w-[100%] mx-auto">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg text-md ">Subtotal</h2>
-              <span className="text-lg font-semibold text-md">${totalPrice}</span>
+              <span className="text-lg font-semibold text-md">${totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg text-md ">Envío</h2>
