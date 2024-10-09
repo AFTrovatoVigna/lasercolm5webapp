@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import { fetchProductById } from "@/Server/fetchProducts.jsx";
-import ProductDetail from "./[productsid]/page";
 
 
 async function ProductDetail({ params }) {
