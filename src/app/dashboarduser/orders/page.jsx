@@ -4,7 +4,6 @@ import { getOrders } from '@/helpers/getOrder.helper';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import React, { useEffect, useState } from 'react';
 
 const Orders = () => {
   const router = useRouter();
@@ -36,28 +35,28 @@ const Orders = () => {
 
   return (
     <div className="p-4 lg:h-[1000px]">
-      <h1 className="text-2xl font-bold text-center mb-4 mt-10">MIS PEDIDOS</h1>
+      <h1 className="mt-10 mb-4 text-2xl font-bold text-center">MIS PEDIDOS</h1>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex items-center justify-between mb-4">
         <Link href={"/dashboarduser"} className=" text-[11px] ml-20 lg:m-2 bg-pink-700 p-2 rounded-xl lg:text-sm">
           VOLVER A MI PERFIL
         </Link>
       </div>
 
-      <h2 className="text-xl font-bold mb-2 lg:mb-4">Pedidos</h2>
+      <h2 className="mb-2 text-xl font-bold lg:mb-4">Pedidos</h2>
 
       {orders && orders.length > 0 ? (
         orders.map((order) => (
-          <div key={order.id} className="border rounded-lg shadow-md p-4 mb-4">
-            <div className="flex justify-between items-center mb-2">
+          <div key={order.id} className="p-4 mb-4 border rounded-lg shadow-md">
+            <div className="flex items-center justify-between mb-2">
               <div>
-                <p className="text-sm -mt-8">
+                <p className="-mt-8 text-sm">
                   <span className="font-bold">Fecha del pedido:</span> {new Date(order.date)?.toLocaleDateString()} ✅
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-sm mb-4">Numero de pedido: #{order.id}</p>
-                <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
+                <p className="mb-4 text-sm">Numero de pedido: #{order.id}</p>
+                <span className="px-3 py-1 text-sm text-white bg-green-500 rounded-full">
                  
                 </span>
               </div>
@@ -72,7 +71,7 @@ const Orders = () => {
         ))
       ) : (
         <div>
-          <p className="text-center font-bold text-xl mb-10">No tenés pedidos📦</p>
+          <p className="mb-10 text-xl font-bold text-center">No tenés pedidos📦</p>
           <Link href={"/products"} className="lg:ml-[300px] font-bold rounded-xl bg-pink-700 p-4 text-xl mb-5">
             HACÉ CLICK ACÁ PARA COMPRAR TUS PRODUCTOS FAVORITOS🔥
           </Link>

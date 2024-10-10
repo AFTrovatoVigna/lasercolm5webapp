@@ -132,14 +132,14 @@ const ProfileComponent = () => {
           <button onClick={openModal} className="mt-4 text-pink-800 hover:underline">
             Editar Foto
           </button>
-          <h2 className="mt-4 lg:mt-4 text-lg lg:text-xl font-semibold lg:font-bold text-gray-700">
+          <h2 className="mt-4 text-lg font-semibold text-gray-700 lg:mt-4 lg:text-xl lg:font-bold">
             ¡Hola {userData?.name}!
           </h2>
         </div>
         <nav className="mt-6 lg:mt-10">
           <ul className="space-y-2 text-sm lg:text-lg">
             <li>
-              <a href="#" className="flex items-center text-pink-800 font-semibold hover:underline">
+              <a href="#" className="flex items-center font-semibold text-pink-800 hover:underline">
                 <span>👤 Perfil</span>
               </a>
             </li>
@@ -158,11 +158,11 @@ const ProfileComponent = () => {
       </div>
 
       <div className="w-full lg:w-3/4 p-2 lg:p-6  lg:mt-36 rounded-lg lg:h-[400px]">
-        <h3 className="text-xl lg:text-2xl text-start lg:ml-5 rounded-xl p-2 mb-4 font-semibold">
+        <h3 className="p-2 mb-4 text-xl font-semibold lg:text-2xl text-start lg:ml-5 rounded-xl">
           MIS DATOS PERSONALES
         </h3>
         <div className="h-auto lg:h-[295px] p-4 lg:p-6 rounded-lg ">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 gap-4 mb-4 lg:grid-cols-2">
             <div>
               <h4 className="text-gray-600">Nombre</h4>
               {isEditing ? (
@@ -171,7 +171,7 @@ const ProfileComponent = () => {
                   name="name"
                   value={editedData.name}
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.name}</p>
@@ -185,7 +185,7 @@ const ProfileComponent = () => {
                   name="phone"
                   value={editedData.phone}
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.phone}</p>
@@ -199,7 +199,7 @@ const ProfileComponent = () => {
                   name="email"
                   value={editedData.email}
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.email}</p>
@@ -214,7 +214,7 @@ const ProfileComponent = () => {
                   name="country" // Correctly set to 'country'
                   value={editedData.country || ""} // Use editedData.country to bind the value
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.country}</p>
@@ -229,7 +229,7 @@ const ProfileComponent = () => {
                   name="city" // Update this to match the state key
                   value={editedData.city || ""} // Ensure the value is bound correctly
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.city}</p>
@@ -243,7 +243,7 @@ const ProfileComponent = () => {
                   name="address"
                   value={editedData.address}
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.address}</p>
@@ -257,7 +257,7 @@ const ProfileComponent = () => {
                   name="birthDate"
                   value={editedData.birthDate}
                   onChange={handleInputChange}
-                  className="border rounded px-2 py-1"
+                  className="px-2 py-1 border rounded"
                 />
               ) : (
                 <p className="text-gray-800">{userData?.birthDate}</p>
@@ -267,13 +267,13 @@ const ProfileComponent = () => {
           <div className="text-right">
             {isEditing ? (
               <button
-                className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out"
+                className="px-4 py-2 text-white transition duration-300 ease-in-out bg-pink-600 rounded-md hover:bg-pink-800"
                 onClick={handleSaveClick}>
                 GUARDAR
               </button>
             ) : null}
             <button
-              className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out ml-4"
+              className="px-4 py-2 ml-4 text-white transition duration-300 ease-in-out bg-pink-600 rounded-md hover:bg-pink-800"
               onClick={() => setIsEditing(!isEditing)}
             >
               {isEditing ? "CANCELAR" : "EDITAR"}
@@ -285,6 +285,6 @@ const ProfileComponent = () => {
 
       
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray -800 bg-opacity-50"> <div className="bg-white p-6 rounded-lg shadow-lg"> <h2 className="text-lg font-semibold mb-4">Cambiar Foto de Perfil</h2> <input type="file" onChange={handleImageChange} /> <div className="mt-4 flex justify-end"> <button className="px-4 py-2 mr-2 bg-gray-300 rounded-md" onClick={closeModal} > Cancelar </button> <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out" onClick={handleSaveImage} > Guardar </button> </div> </div> </div> )} </div> ); };
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-gray -800"> <div className="p-6 bg-white rounded-lg shadow-lg"> <h2 className="mb-4 text-lg font-semibold">Cambiar Foto de Perfil</h2> <input type="file" onChange={handleImageChange} /> <div className="flex justify-end mt-4"> <button className="px-4 py-2 mr-2 bg-gray-300 rounded-md" onClick={closeModal} > Cancelar </button> <button className="px-4 py-2 text-white transition duration-300 ease-in-out bg-pink-600 rounded-md hover:bg-pink-800" onClick={handleSaveImage} > Guardar </button> </div> </div> </div> )} </div> ); };
 
 export default ProfileComponent;

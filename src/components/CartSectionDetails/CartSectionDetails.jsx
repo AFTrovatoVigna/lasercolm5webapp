@@ -40,7 +40,10 @@ const CartSectionDetails = ({ products }) => {
             )
           }
         ),
-        email:JSON.parse(localStorage.getItem("userSession")).email
+        email:JSON.parse(localStorage.getItem("userSession")).email,
+        cartId:localStorage.getItem("cartId"),
+        userId:JSON.parse(localStorage.getItem("userSession")).id
+        
         })
       })
         .then(res => res.json())
