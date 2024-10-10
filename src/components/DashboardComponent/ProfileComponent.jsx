@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { GetUserById } from '@/helpers/auth.helper';
 import Link from 'next/link';
 import { UpdateUser } from  '@/helpers/users.helper';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 const ProfileComponent = () => {
   const router = useRouter();
@@ -279,6 +280,7 @@ const ProfileComponent = () => {
             </button>
           </div>
         </div>
+        <WhatsAppButton/>
       </div>
 
       
