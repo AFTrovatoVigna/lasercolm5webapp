@@ -4,7 +4,7 @@ import { GetCart, DeleteProductFromCart } from '@/helpers/cart.helper';
 import CartProduct from '@/components/CartProduct/CartProduct';
 import { useRouter } from 'next/navigation'; // Import useRouter
 import CartSectionDetails from '@/components/CartSectionDetails/CartSectionDetails';
-
+import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 const Cart = () => {
   const router = useRouter(); // Initialize the router
   const [userData, setUserData] = useState(null);
@@ -92,6 +92,7 @@ const Cart = () => {
           <p>Se realizó la orden de compra: {cart.isPurchased ? "Yes" : "No"}</p>
         </>
       )}
+      <WhatsAppButton/>
     </div>
   );
 }

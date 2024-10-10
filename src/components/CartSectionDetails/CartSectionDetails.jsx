@@ -6,6 +6,19 @@ const CartSectionDetails = ({ products }) => {
   const APIURL = process.env.NEXT_PUBLIC_API_URL
   const [id, setId] = useState("")
 
+  // Function to calculate the total price of products
+  const calculateTotalPrice = () => {
+    if (!Array.isArray(products)) return 0; // Ensure products is an array
+    let total = 0; 
+    products.forEach(product => {
+      if (product.valor) {
+        total += Number(product.valor); // Add product.valor to total if it exists
+      }
+    });
+
+    return total; // Return the total price
+  };
+
   useEffect(() => {
     
     if (products) {
@@ -37,6 +50,8 @@ const CartSectionDetails = ({ products }) => {
     }
   }, [products])
 
+  const totalPrice = calculateTotalPrice(); // Calculate total price
+
   return (
     <>
 
@@ -59,7 +74,7 @@ const CartSectionDetails = ({ products }) => {
           <div className="bg-pink-200 p-4 md:p-6 rounded-lg shadow-lg lg:h-[270px] mb-10 w-full sm:w-[100%] mx-auto">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg text-md ">Subtotal</h2>
-              <span className="text-lg font-semibold text-md">$100000</span>
+              <span className="text-lg font-semibold text-md">${totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg text-md ">Envío</h2>
