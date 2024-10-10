@@ -1,6 +1,6 @@
-export async function getOrders(token, cartId) {
+export async function getOrders(token, cartId, id) {
     try {
-        const res = await fetch(`https://back-deploy-5y3a.onrender.com/cart/${cartId}/order`, {
+        const res = await fetch(`https://back-deploy-5y3a.onrender.com/${id}/orders`, {
             method: 'GET',
             cache: "no-cache",
             headers: {

@@ -23,7 +23,7 @@ const Orders = () => {
 
   const fetchData = async () => {
     if (userSession?.token && cartId) { // Verificar que tanto userSession como cartId estén disponibles
-      const ordersResponse = await getOrders(userSession?.token, cartId);
+      const ordersResponse = await getOrders(userSession?.token, cartId, userSession?.id );
       setOrders(ordersResponse);
     }
   };
@@ -58,7 +58,7 @@ const Orders = () => {
               <div className="text-right">
                 <p className="text-sm mb-4">Numero de pedido: #{order.id}</p>
                 <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
-                  {order.status.toUpperCase()}
+                 
                 </span>
               </div>
             </div>
