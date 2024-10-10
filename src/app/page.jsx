@@ -1,6 +1,7 @@
 "use client"
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect } from "react";
+import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 // import { useRouter } from 'next/router';
 
 export default function Home() {
@@ -344,6 +345,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <WhatsAppButton/>
     </div>
   );
 }

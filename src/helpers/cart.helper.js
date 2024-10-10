@@ -55,7 +55,7 @@ export async function AddtoCart(cartId, productId, router, cantidad) {
     throw new Error(`Failed to add product to cart: ${error.message}`);
   }
 }
-export async function QuickAddtoCart(cartId, productId, cantidad) {
+export async function QuickAddtoCart(productId) {
   try {
     const cartId = localStorage.getItem('cartId');
     if (!cartId) {
