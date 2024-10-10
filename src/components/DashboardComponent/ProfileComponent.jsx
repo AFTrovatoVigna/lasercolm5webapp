@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { GetUserById } from '@/helpers/auth.helper';
 import Link from 'next/link';
+import { UpdateUser } from  '@/helpers/users.helper';
 
 const ProfileComponent = () => {
   const router = useRouter();
@@ -98,6 +99,14 @@ const ProfileComponent = () => {
       console.error("Error uploading image", error);
     }
   };
+
+    // Function to handle the "EDITAR" button click
+    const handleSaveClick = () => {
+      setIsEditing(true);
+      UpdateUser
+      // Additional logic when entering editing mode (if needed)
+    };
+  
 
   return (
     <div className="flex flex-col lg:flex-row lg:mt-[14px] lg:h-[560px] bg-pink-100">
@@ -231,7 +240,9 @@ const ProfileComponent = () => {
           </div>
           <div className="text-right">
             {isEditing ? (
-              <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out">
+              <button
+                className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out"
+                onClick={handleSaveClick}>
                 GUARDAR
               </button>
             ) : null}
