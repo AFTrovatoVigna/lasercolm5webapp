@@ -35,13 +35,16 @@ export async function GetCart(userId) {
   }
 }
 
-export async function AddtoCart(cartId, productId, router) {
+export async function AddtoCart(cartId, productId, router, cantidad) {
   try {
     const res = await fetch(`${API_URL}/cart/${cartId}/${productId}`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
-      }
+      },
+      body:JSON.stringify({
+        quantity: Number(cantidad)
+      })
     });
 
     if (res.ok) {
@@ -52,7 +55,7 @@ export async function AddtoCart(cartId, productId, router) {
     throw new Error(`Failed to add product to cart: ${error.message}`);
   }
 }
-export async function QuickAddtoCart(cartId, productId) {
+export async function QuickAddtoCart(cartId, productId, cantidad) {
   try {
     const cartId = localStorage.getItem('cartId');
     if (!cartId) {
@@ -67,7 +70,10 @@ export async function QuickAddtoCart(cartId, productId) {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
-      }
+      },
+      body:JSON.stringify({
+        quantity: Number(cantidad)
+      })
     });
     
     if (res.ok) {

@@ -14,7 +14,7 @@ function Collar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${APIURL}/collares`);
+                const response = await fetch(`${APIURL}/products/category/collares`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { AddtoCart } from '@/helpers/cart.helper';
 import Swal from 'sweetalert2';
 
-const AddToCartButton = ({ productId }) => {
+const AddToCartButton = ({ productId, cantidad }) => {
   const router = useRouter(); // Usar el hook aquí
 
   const handleAddToCart = async () => {
@@ -29,7 +29,7 @@ const AddToCartButton = ({ productId }) => {
     });
     if (result.isConfirmed) {
       try {
-        await AddtoCart(cartId, productId, router); // Pasar router como parámetro
+        await AddtoCart(cartId, productId, router, cantidad); // Pasar router como parámetro
         Swal.fire({
           icon: 'success',
           title: 'Agregado',

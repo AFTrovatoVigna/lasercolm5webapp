@@ -14,7 +14,7 @@ function ManillaId() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_URL}/products/categoy/manillasID`);
+                const response = await fetch(`${API_URL}/products/category/manillasID`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -10,7 +10,7 @@ const ProductDetailClient = ({ product }) => {
     const [text, setText] = useState('');
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-
+    const [cantidad, setCantidad] = useState(1)
 
     const handleTextChange = (e) => {
         if (e.target.value.length <= 15) {
@@ -56,7 +56,7 @@ const ProductDetailClient = ({ product }) => {
                         </p>
                         <p>En Lasercol, creemos que los recuerdos y las conexiones profundas merecen ser eternos. Nuestros productos, fabricados en acero inoxidable pulido, son grabados con láser y personalizables con tu mensaje. Crea una pieza única que celebre tus historias más queridas</p>
                     </div>
-                    <h3 className="mb-6 text-2xl font-bold text-gray-800">Precio: ${product.valor}</h3>
+                    <h3 className="mb-6 text-2xl font-bold text-gray-800 ">Precio: ${product.valor}<br></br> <span >Cantidad: <input className="w-16 p-2 text-center border border-gray-300 rounded" type="number" onChange={(e)=>setCantidad(e.target.value)} value={cantidad} /></span></h3>
 
                 
                     <div className="mb-4">
@@ -94,7 +94,7 @@ const ProductDetailClient = ({ product }) => {
                         )}
                     </div>
 
-                    <AddToCartButton productId={product.id} /> 
+                    <AddToCartButton productId={product.id} cantidad ={cantidad}/> 
                 
                 </div>
             </div>
