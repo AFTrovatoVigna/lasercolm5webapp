@@ -206,7 +206,7 @@ const ProfileComponent = () => {
               <p className="text-gray-800">{userData?.email}</p>
             </div>
             <div>
-              <h4 className="text-gray-600">DNI</h4>
+              <h4 className="text-gray-600">Pais</h4>
               {isEditing ? (
                 <input
                   type="text"
@@ -220,7 +220,7 @@ const ProfileComponent = () => {
               )}
             </div>
             <div>
-              <h4 className="text-gray-600">DNI</h4>
+              <h4 className="text-gray-600">Ciudad</h4>
               {isEditing ? (
                 <input
                   type="text"
