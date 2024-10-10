@@ -4,21 +4,25 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-
+import Swal from 'sweetalert2'
 
 function Navbar() {
   const router = useRouter();
- const searchParams = useSearchParams();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
+  const APIURL = process.env.NEXT_PUBLIC_API_URL
 
 
-  
   useEffect(() => {
+    let token
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      token = params.get('token');
+    }
     const userSession = localStorage.getItem('userSession');
-  const token = searchParams.get('token');
-  
+    // const token = searchParams.get('token');
+
     if (userSession) {
       try {
         const sessionData = JSON.parse(userSession);
@@ -36,20 +40,31 @@ function Navbar() {
     } else {
       setIsLoggedIn(false);
       if (token) {
-        fetch(`https://back-deploy-5y3a.onrender.com/users/session/${token}`,{
+        fetch(`${APIURL}/users/session/${token}`, {
           method: 'GET',
           headers: {
-              Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`
           }
         })
-          .then(res =>res.json())
+          .then(res => res.json())
           .then(res => {
-            
-        localStorage.setItem("userSession", JSON.stringify(res));
-        setIsLoggedIn(true);
-        router.push("/")
+
+            localStorage.setItem("userSession", JSON.stringify(res));
+            setIsLoggedIn(true);
+
+            fetch(`${APIURL}/cart/${res.id}`)
+              .then(res => res.json())
+              .then(res => {
+                                
+                localStorage.setItem("cartId", res.id);
+
+              })
+            router.push("/")
+          }).catch(error => {
+            Swal.fire("No pudimos corroborar tus datos. Inténtalo nuevamente");
+
           })
-          
+
       }
     }
   }, []);
@@ -70,6 +85,9 @@ function Navbar() {
   };
 
   return (
+
+
+
     <div>
       <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 shadow-md bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
         <div className="flex items-center justify-between">
@@ -82,7 +100,7 @@ function Navbar() {
             <Link href="/" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
             <Link href="/products" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
             <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
-            <Link href="/about" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+            <Link href="/disenos" className="text-lg font-medium text-black transition duration-300 hover:text-pink-600">Materiales</Link>
           </div>
 
 
@@ -126,11 +144,11 @@ function Navbar() {
 
 
         {isOpen && (
-          <div className="p-4 mt-4 rounded-lg shadow-lg lg:hidden bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100">
-            <Link href="/" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
-            <Link href="/products" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
-            <Link href="/about" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
-            <Link href="/designs" className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
+          <div className="lg:hidden mt-4 bg-gradient-to-r from-pink-100 via-purple-100 to-yellow-100 rounded-lg shadow-lg p-4">
+            <Link href="/" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Home</Link>
+            <Link href="/products" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Productos</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Sobre nosotros</Link>
+            <Link href="/disenos" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium text-black transition duration-300 hover:text-pink-600">Diseños</Link>
 
             {isLoggedIn ? (
               <>

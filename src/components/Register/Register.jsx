@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
 import { validateRegister } from '@/helpers/validateRegister';
 import { useRouter } from 'next/navigation';
@@ -47,6 +46,7 @@ const RegisterForm = () => {
     try {
       const newuser = await register(dataUser);
       Swal.fire("Te registraste correctamente");
+      console.log ("res",newuser);
       const newCart = await CreateCart(newuser.id);
       console.log ("The new cart",newCart);
       console.log ("The new user id", newuser.id);
@@ -93,7 +93,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.name && <p className="text-red-500">{errors.name}</p>}
+        {errors.name && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.name}</p>}
       </div>
   
       {/* Email */}
@@ -111,7 +111,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.email && <p className="text-red-500">{errors.email}</p>}
+        {errors.email && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.email}</p>}
       </div>
   
       {/* Contraseña */}
@@ -129,7 +129,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.password && <p className="text-red-500">{errors.password}</p>}
+        {errors.password && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.password}</p>}
       </div>
   
       {/* Confirmar contraseña */}
@@ -148,7 +148,7 @@ const RegisterForm = () => {
           required
         />
         {errors.passwordConfirmation && (
-          <p className="text-red-500">{errors.passwordConfirmation}</p>
+          <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.passwordConfirmation}</p>
         )}
       </div>
   
@@ -167,7 +167,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.Dni && <p className="text-red-500">{errors.Dni}</p>}
+        {errors.Dni && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.Dni}</p>}
       </div>
   
       {/* Dirección */}
@@ -185,7 +185,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.address && <p className="text-red-500">{errors.address}</p>}
+        {errors.address && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.address}</p>}
       </div>
   
       {/* Teléfono */}
@@ -203,7 +203,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+        {errors.phone && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.phone}</p>}
       </div>
   
       {/* País */}
@@ -221,7 +221,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.country && <p className="text-red-500">{errors.country}</p>}
+        {errors.country && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.country}</p>}
       </div>
   
       {/* Ciudad */}
@@ -239,7 +239,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.city && <p className="text-red-500">{errors.city}</p>}
+        {errors.city && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.city}</p>}
       </div>
   
       {/* Fecha de nacimiento */}
@@ -256,7 +256,7 @@ const RegisterForm = () => {
           className="w-full p-2 h-9 shadow-md bg-white border text-black rounded-lg focus:outline-none focus:border-pink-900"
           required
         />
-        {errors.birthDate && <p className="text-red-500">{errors.birthDate}</p>}
+        {errors.birthDate && <p className="text-red-500 text-[10px] lg:text-[13px]">{errors.birthDate}</p>}
       </div>
   
       {/* Botón de registro */}
