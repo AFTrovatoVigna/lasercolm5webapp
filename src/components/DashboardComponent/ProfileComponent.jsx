@@ -211,12 +211,26 @@ const ProfileComponent = () => {
                 <input
                   type="text"
                   name="Dni"
-                  value={editedData.Dni}
+                  value={editedData.country}
                   onChange={handleInputChange}
                   className="border rounded px-2 py-1"
                 />
               ) : (
-                <p className="text-gray-800">{userData?.Dni}</p>
+                <p className="text-gray-800">{userData?.country}</p>
+              )}
+            </div>
+            <div>
+              <h4 className="text-gray-600">DNI</h4>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="Dni"
+                  value={editedData.city}
+                  onChange={handleInputChange}
+                  className="border rounded px-2 py-1"
+                />
+              ) : (
+                <p className="text-gray-800">{userData?.city}</p>
               )}
             </div>
             <div>
