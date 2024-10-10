@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { GetUserById } from '@/helpers/auth.helper';
 import Link from 'next/link';
+import { UpdateUser } from  '@/helpers/users.helper';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 const ProfileComponent = () => {
@@ -100,6 +101,24 @@ const ProfileComponent = () => {
     }
   };
 
+    // Function to handle the "EDITAR" button click
+    const handleSaveClick = async () => {
+      if (!userSession || !userSession.id || !userSession.token) {
+        console.error('User session data is missing');
+        return;
+      }
+    
+      try {
+        const updatedUser = await UpdateUser(userSession.id, editedData, userSession.token);
+        setUserData(updatedUser); // Update the local user data with the response
+        setIsEditing(false); // Exit the editing mode
+        console.log('User updated successfully:', updatedUser);
+      } catch (error) {
+        console.error('Error saving user:', error);
+      }
+    };
+  
+
   return (
     <div className="flex flex-col lg:flex-row lg:mt-[14px] lg:h-[560px] bg-pink-100">
 
@@ -174,7 +193,7 @@ const ProfileComponent = () => {
             </div>
             <div>
               <h4 className="text-gray-600">Email</h4>
-              {isEditing ? (
+              {/* {isEditing ? (
                 <input
                   type="text"
                   name="email"
@@ -184,20 +203,36 @@ const ProfileComponent = () => {
                 />
               ) : (
                 <p className="text-gray-800">{userData?.email}</p>
-              )}
+              )} */}
+              <p className="text-gray-800">{userData?.email}</p>
             </div>
             <div>
-              <h4 className="text-gray-600">DNI</h4>
+              <h4 className="text-gray-600">Pais</h4>
               {isEditing ? (
                 <input
                   type="text"
-                  name="Dni"
-                  value={editedData.Dni}
+                  name="country" // Correctly set to 'country'
+                  value={editedData.country || ""} // Use editedData.country to bind the value
                   onChange={handleInputChange}
                   className="border rounded px-2 py-1"
                 />
               ) : (
-                <p className="text-gray-800">{userData?.Dni}</p>
+                <p className="text-gray-800">{userData?.country}</p>
+              )}
+            </div>
+
+            <div>
+              <h4 className="text-gray-600">Ciudad</h4>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="city" // Update this to match the state key
+                  value={editedData.city || ""} // Ensure the value is bound correctly
+                  onChange={handleInputChange}
+                  className="border rounded px-2 py-1"
+                />
+              ) : (
+                <p className="text-gray-800">{userData?.city}</p>
               )}
             </div>
             <div>
@@ -231,7 +266,9 @@ const ProfileComponent = () => {
           </div>
           <div className="text-right">
             {isEditing ? (
-              <button className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out">
+              <button
+                className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-800 transition duration-300 ease-in-out"
+                onClick={handleSaveClick}>
                 GUARDAR
               </button>
             ) : null}
