@@ -5,6 +5,7 @@ import FiltroProductos from "@/components/Filtro/filtro";
 import ProductsCards from "@/components/ProductsCards/ProductsCards";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 
 function Product() {
     const [productos, setProducts] = useState([]);
@@ -102,6 +103,7 @@ function Product() {
 
 
             <FiltroProductos productos={productos} />
+            <WhatsAppButton/>
         </div>
     );
 }
