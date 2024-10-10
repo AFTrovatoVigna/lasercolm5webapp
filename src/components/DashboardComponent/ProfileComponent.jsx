@@ -210,8 +210,8 @@ const ProfileComponent = () => {
               {isEditing ? (
                 <input
                   type="text"
-                  name="Dni"
-                  value={editedData.country}
+                  name="country" // Correctly set to 'country'
+                  value={editedData.country || ""} // Use editedData.country to bind the value
                   onChange={handleInputChange}
                   className="border rounded px-2 py-1"
                 />
@@ -219,13 +219,14 @@ const ProfileComponent = () => {
                 <p className="text-gray-800">{userData?.country}</p>
               )}
             </div>
+
             <div>
               <h4 className="text-gray-600">Ciudad</h4>
               {isEditing ? (
                 <input
                   type="text"
-                  name="Dni"
-                  value={editedData.city}
+                  name="city" // Update this to match the state key
+                  value={editedData.city || ""} // Ensure the value is bound correctly
                   onChange={handleInputChange}
                   className="border rounded px-2 py-1"
                 />
