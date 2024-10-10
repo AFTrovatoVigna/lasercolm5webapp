@@ -16,8 +16,10 @@ const Orders = () => {
     }
   }, [])
 
+  const cartId = localStorage.getItem('cartId');
+
   const fetchData = async () => {
-    const ordersResponse = await getOrders(userSession?.token, userSession?.userId);
+    const ordersResponse = await getOrders(userSession?.token, cartId );
     setOrders(ordersResponse)
   }
 
@@ -33,7 +35,7 @@ const Orders = () => {
       <h1 className="text-2xl font-bold text-center mb-4 mt-10">MIS PEDIDOS</h1>
 
       <div className="flex justify-between items-center mb-4">
-        <Link href={"/dashboarduser"} className=" text-[11px] ml-20 lg:m-2 bg-[#C4AC23] p-2 rounded-xl lg:text-sm  ">
+        <Link href={"/dashboarduser"} className=" text-[11px] ml-20 lg:m-2 bg-pink-700 p-2 rounded-xl lg:text-sm  ">
          VOLVER A MI PERFIL
         </Link>
         
