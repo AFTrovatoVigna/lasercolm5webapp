@@ -101,10 +101,20 @@ const ProfileComponent = () => {
   };
 
     // Function to handle the "EDITAR" button click
-    const handleSaveClick = () => {
-      setIsEditing(true);
-      UpdateUser
-      // Additional logic when entering editing mode (if needed)
+    const handleSaveClick = async () => {
+      if (!userSession || !userSession.id || !userSession.token) {
+        console.error('User session data is missing');
+        return;
+      }
+    
+      try {
+        const updatedUser = await UpdateUser(userSession.id, editedData, userSession.token);
+        setUserData(updatedUser); // Update the local user data with the response
+        setIsEditing(false); // Exit the editing mode
+        console.log('User updated successfully:', updatedUser);
+      } catch (error) {
+        console.error('Error saving user:', error);
+      }
     };
   
 
