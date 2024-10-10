@@ -29,7 +29,7 @@ function Navbar() {
     if (collection_status) {
       if (collection_status == "approved") {
         
-        fetch(`http://localhost:3000/cart/order/${cartId}/${sessionId}`,
+        fetch(`https://back-deploy-5y3a.onrender.com/cart/order/${cartId}/${sessionId}`,
           {
             method:"POST"
           }

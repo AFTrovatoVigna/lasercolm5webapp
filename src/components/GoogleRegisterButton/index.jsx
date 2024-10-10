@@ -9,7 +9,7 @@ const GoogleCustomerRegisterButton = () => {
 
   const handleGoogleRegister = () => {
     // Cambiado localhost a la URL del backend en producción
-    window.location.href = "http://localhost:3000/auth/api/google/register/customer"
+    window.location.href = "https://back-deploy-5y3a.onrender.com/auth/api/google/register/customer"
   };//https://back-deploy-5y3a.onrender.com
 
   useEffect(() => {
