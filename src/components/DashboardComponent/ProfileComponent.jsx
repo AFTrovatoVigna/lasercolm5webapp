@@ -124,7 +124,7 @@ const ProfileComponent = () => {
               </a>
             </li>
             <li>
-              <Link href="/dashboard/orders" className="flex items-center text-gray-700 hover:underline">
+              <Link href="/dashboarduser/orders" className="flex items-center text-gray-700 hover:underline">
                 <span>📦 Mis pedidos</span>
               </Link>
             </li>
