@@ -29,8 +29,8 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    if (userSession?.user.name) {
-      userSession?.user.name === undefined ? router.push('/login') : fetchData();
+    if (userSession?.user.id) {
+      userSession?.user.id === undefined ? router.push('/login') : fetchData();
     }
   }, [userSession, cartId]); // Añadir cartId como dependencia
 
